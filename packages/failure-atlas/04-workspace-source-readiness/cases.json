@@ -1,0 +1,19 @@
+{
+  "actual_vendor_client_fixed": false,
+  "classification_guard": "Readiness cannot convey execution authority. Verify resource SHA, project root and expiry before later engine-side permission checks.",
+  "evidence_class": "SOURCE_REVIEWED + PUBLIC_UPSTREAM + LOCAL_CLOSURE_REPORTED",
+  "finding_summary": "Workspace/CWD drift (#24855), local-versus-cloud materialization, FORGEPRIME FPP 0.1.0 local closure reported, host enablement not proven.",
+  "id": "04",
+  "links": [
+    "https://github.com/openai/codex/issues/24855"
+  ],
+  "production_actions_executed": false,
+  "schema": "vyronforge.failure-atlas.casepack/1",
+  "slug": "workspace-source-readiness",
+  "status": "REFERENCE_CANDIDATE_NOT_RELEASED",
+  "test_module": "test_failure_atlas_04.py",
+  "title": "Worktree identity, materialization, FORGEPRIME preconditions and authority",
+  "source_record_as_of": "2026-10-24",
+  "reviewed_as_of": "2026-10-29",
+  "publication_status": "NOT_PUBLISHED"
+}

@@ -1,0 +1,793 @@
+{
+  "schema": "vyronforge.failure-atlas.findings/2",
+  "reviewed_as_of": "2026-10-29",
+  "status": "LOCAL_REFERENCE_ONLY_NOT_PUBLISHED",
+  "publisher": "vYronFORGE. (independent; not OpenAI)",
+  "finding_count": 62,
+  "topics": 11,
+  "boundary": {
+    "fpp_actual_host": "NOT_RUN",
+    "windows_remote_ci": "NOT_RUN",
+    "github_publication": "NOT_DONE",
+    "openai_binaries_patched": false
+  },
+  "findings": [
+    {
+      "id": "01-message_path_escape",
+      "topic_id": "01",
+      "statement": "Windows Codex composer inserted an additional backslash in model-visible path text",
+      "evidence_class": "PUBLIC_UPSTREAM",
+      "fix_status": "REFERENCE_ONLY",
+      "proposed_mitigation": "Compare exact UTF-8 bytes at every UI/model boundary; reject mutated paths",
+      "upstream_issues": [
+        41486,
+        46037
+      ],
+      "test_class": "LOCAL_SYNTHETIC_REFERENCE",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "01-python_text_newlines",
+      "topic_id": "01",
+      "statement": "Windows text-mode stdin transformed a fixed LF byte stream into CRLF in a local controller",
+      "evidence_class": "LOCAL_RUN_REPORTED",
+      "fix_status": "REFERENCE_IMPLEMENTED",
+      "proposed_mitigation": "Use binary stdin/stdout with exact length and SHA-256 assertions",
+      "upstream_issues": [],
+      "test_class": "LOCAL_SYNTHETIC_REFERENCE",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "01-shell_layer_quoting",
+      "topic_id": "01",
+      "statement": "PowerShell-to-CMD and nested SSH/bash/Python quoting can change intended command/target semantics",
+      "evidence_class": "PUBLIC_UPSTREAM_AND_LOCAL_REPORT",
+      "fix_status": "PROPOSED_ONLY",
+      "proposed_mitigation": "Avoid shell interpolation; pass argument arrays and framed data, use binary transport and safe fixed argv",
+      "upstream_issues": [
+        43343,
+        55161
+      ],
+      "test_class": "NO_DIRECT_HOST_REPRO",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "01-guest_tab_protocol",
+      "topic_id": "01",
+      "statement": "Guest emitted backslash+t instead of byte 09 tab delimiter",
+      "evidence_class": "LOCAL_RUN_REPORTED",
+      "fix_status": "REFERENCE_IMPLEMENTED",
+      "proposed_mitigation": "Validate emitted guest bytes and strict parser before remote operation",
+      "upstream_issues": [],
+      "test_class": "LOCAL_SYNTHETIC_REFERENCE",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "01-missing_entrypoint",
+      "topic_id": "01",
+      "statement": "Guest script declared main() but did not call it, yielding exit 0 without safe records",
+      "evidence_class": "LOCAL_RUN_REPORTED",
+      "fix_status": "REFERENCE_IMPLEMENTED",
+      "proposed_mitigation": "Require output schema, record cardinality and completion marker, not merely exit 0",
+      "upstream_issues": [],
+      "test_class": "LOCAL_SYNTHETIC_REFERENCE",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "01-zero_exit_false_positive",
+      "topic_id": "01",
+      "statement": "Process exit zero was mistaken for functional completion",
+      "evidence_class": "LOCAL_RUN_REPORTED",
+      "fix_status": "REFERENCE_IMPLEMENTED",
+      "proposed_mitigation": "Validate actual expected artifacts, schema and application status independent of shell exit",
+      "upstream_issues": [],
+      "test_class": "LOCAL_SYNTHETIC_REFERENCE",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "02-workspace_recursive_delete",
+      "topic_id": "02",
+      "statement": "A public Codex bug report describes cleanup escaping a Windows workspace",
+      "evidence_class": "PUBLIC_UPSTREAM",
+      "fix_status": "PROPOSED_ONLY",
+      "proposed_mitigation": "Treat destructive actions as separately authorized; resolve handles inside restricted workspace and fail closed",
+      "upstream_issues": [
+        43343
+      ],
+      "test_class": "NO_DIRECT_HOST_REPRO",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "02-venv_clear_empty_path",
+      "topic_id": "02",
+      "statement": "Public Windows/WSL report describes data loss from empty temporary-path expansion",
+      "evidence_class": "PUBLIC_UPSTREAM",
+      "fix_status": "PROPOSED_ONLY",
+      "proposed_mitigation": "Reject empty, root, device and out-of-scope paths before process launch; use disposable test roots",
+      "upstream_issues": [
+        55161
+      ],
+      "test_class": "NO_DIRECT_HOST_REPRO",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "02-owner_drive_loss",
+      "topic_id": "02",
+      "statement": "April 2026 local E: data-loss event is reported; exact upstream executor/root cause not verified",
+      "evidence_class": "HISTORICAL_USER_REPORT",
+      "fix_status": "DOCUMENT_ONLY",
+      "proposed_mitigation": "Preserve disk forensic evidence and raw command provenance privately; never reenact deletion",
+      "upstream_issues": [],
+      "test_class": "NO_DIRECT_HOST_REPRO",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "02-server_rebuild",
+      "topic_id": "02",
+      "statement": "May 2026 server disruption and missing directory/rebuild history reported; original responsible command unresolved",
+      "evidence_class": "HISTORICAL_USER_REPORT",
+      "fix_status": "DOCUMENT_ONLY",
+      "proposed_mitigation": "Correlate read-only execution logs and snapshots before causal attribution",
+      "upstream_issues": [],
+      "test_class": "NO_DIRECT_HOST_REPRO",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "02-volume_mount_identity",
+      "topic_id": "02",
+      "statement": "Unmounted or cloned volume identity reported; no full volume lineage proof",
+      "evidence_class": "USER_REPORTED",
+      "fix_status": "PROPOSED_ONLY",
+      "proposed_mitigation": "Bind volume identifier, mount identity, filesystem and snapshot before mutation",
+      "upstream_issues": [],
+      "test_class": "NO_DIRECT_HOST_REPRO",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "02-reparse_symlink_escape",
+      "topic_id": "02",
+      "statement": "Junctions, symlinks and reparse points can break string-only path checks",
+      "evidence_class": "SOURCE_REVIEWED_RISK",
+      "fix_status": "REFERENCE_ONLY",
+      "proposed_mitigation": "Prove effective open handles and enforce native OS isolation; synthetic reference rejects links",
+      "upstream_issues": [],
+      "test_class": "LOCAL_SYNTHETIC_REFERENCE",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "03-git_process_accumulation",
+      "topic_id": "03",
+      "statement": "Public Codex report describes many git processes and approximately 98 percent physical RAM usage",
+      "evidence_class": "PUBLIC_UPSTREAM",
+      "fix_status": "PROPOSED_ONLY",
+      "proposed_mitigation": "Enforce process-tree and concurrency quotas with OS-level budgets",
+      "upstream_issues": [
+        48666
+      ],
+      "test_class": "NO_DIRECT_HOST_REPRO",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "03-commit_memory_exhaustion",
+      "topic_id": "03",
+      "statement": "Public issue reports commit-memory growth, freezes and app crashes",
+      "evidence_class": "PUBLIC_UPSTREAM",
+      "fix_status": "PROPOSED_ONLY",
+      "proposed_mitigation": "Cap virtual memory, log peak commit, watchdog and terminate owned tree on breach",
+      "upstream_issues": [
+        38765
+      ],
+      "test_class": "NO_DIRECT_HOST_REPRO",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "03-local_process_bursts",
+      "topic_id": "03",
+      "statement": "Local process start overloads and slowdowns reported without complete per-process causal trace",
+      "evidence_class": "USER_REPORTED",
+      "fix_status": "PROPOSED_ONLY",
+      "proposed_mitigation": "Bound child-count, launch rate, CPU, memory and wall time before execution",
+      "upstream_issues": [],
+      "test_class": "NO_DIRECT_HOST_REPRO",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "03-system_disk_full",
+      "topic_id": "03",
+      "statement": "Prior Windows C: free space near 1 GB and 0x80070070 install failure reported",
+      "evidence_class": "HISTORICAL_RECORD_SUMMARY",
+      "fix_status": "DOCUMENT_ONLY",
+      "proposed_mitigation": "Disk free-space preflight and capacity reservation, separate from kernel crash attribution",
+      "upstream_issues": [],
+      "test_class": "NO_DIRECT_HOST_REPRO",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "03-kernel_double_fault",
+      "topic_id": "03",
+      "statement": "Three historical 0x1000007F arg1=8 double-fault bugchecks reported",
+      "evidence_class": "HISTORICAL_RECORD_SUMMARY",
+      "fix_status": "DOCUMENT_ONLY",
+      "proposed_mitigation": "Analyze actual dumps with driver and hardware evidence; do not attribute to RAM or C: without proof",
+      "upstream_issues": [],
+      "test_class": "NO_DIRECT_HOST_REPRO",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "03-windows_freeze_restart",
+      "topic_id": "03",
+      "statement": "Unexpected Windows freezes and Kernel-Power/EventLog restart signatures reported",
+      "evidence_class": "HISTORICAL_RECORD_SUMMARY",
+      "fix_status": "DOCUMENT_ONLY",
+      "proposed_mitigation": "Correlate WER/dumps/kernel events; do not infer Codex causation from temporal proximity",
+      "upstream_issues": [],
+      "test_class": "NO_DIRECT_HOST_REPRO",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "04-workspace_cwd_drift",
+      "topic_id": "04",
+      "statement": "Codex resumed thread can use unexpected working directory and AGENTS.md",
+      "evidence_class": "PUBLIC_UPSTREAM_AND_SOURCE_REVIEWED",
+      "fix_status": "PROPOSED_ONLY",
+      "proposed_mitigation": "Bind project/root/CWD and permission snapshot before turn and each host mutation",
+      "upstream_issues": [
+        24855
+      ],
+      "test_class": "NO_DIRECT_HOST_REPRO",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "04-source_authority_drift",
+      "topic_id": "04",
+      "statement": "Multiple mirrors and copied implementations caused current versus candidate confusion",
+      "evidence_class": "LOCAL_REPORT_AND_SOURCE_REVIEWED",
+      "fix_status": "PROPOSED_ONLY",
+      "proposed_mitigation": "Bind exact source-root, content hash and lifecycle state; reject name-only matching",
+      "upstream_issues": [],
+      "test_class": "NO_DIRECT_HOST_REPRO",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "04-artifact_materialization",
+      "topic_id": "04",
+      "statement": "Chat-visible artifacts may not exist inside the local Codex execution filesystem",
+      "evidence_class": "USER_REPORTED",
+      "fix_status": "PROPOSED_ONLY",
+      "proposed_mitigation": "Preflight materialization, file hash and executor visibility",
+      "upstream_issues": [],
+      "test_class": "NO_DIRECT_HOST_REPRO",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "04-forgeprime_precondition",
+      "topic_id": "04",
+      "statement": "FORGEPRIME FPP 0.1.0 and local adapter closure reported, not product-activated here",
+      "evidence_class": "LOCAL_CLOSURE_REPORTED",
+      "fix_status": "REFERENCE_ONLY",
+      "proposed_mitigation": "Use genuine current FPP host adapter, not synthetic oracle; readiness never grants execution authority",
+      "upstream_issues": [],
+      "test_class": "LOCAL_SYNTHETIC_REFERENCE",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "04-toctou_between_ready_and_run",
+      "topic_id": "04",
+      "statement": "Hashes can be invalidated between readiness and actual execution",
+      "evidence_class": "ARCHITECTURAL_RISK",
+      "fix_status": "PROPOSED_ONLY",
+      "proposed_mitigation": "Use immutable inputs or renewed identity check at execution boundary",
+      "upstream_issues": [],
+      "test_class": "NO_DIRECT_HOST_REPRO",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "04-duplicate_reconstruction",
+      "topic_id": "04",
+      "statement": "Already available historical code can be rebuilt into a parallel candidate when provenance is lost",
+      "evidence_class": "SOURCE_REVIEWED_HISTORICAL",
+      "fix_status": "PROPOSED_ONLY",
+      "proposed_mitigation": "Artifact lineage registry and explicit not-current status on missing originals",
+      "upstream_issues": [],
+      "test_class": "NO_DIRECT_HOST_REPRO",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "05-skill_negative_trigger",
+      "topic_id": "05",
+      "statement": "Codex attempted synthetic Alpha SKILL.md read despite exclude marker in frontmatter; body failed to load",
+      "evidence_class": "USER_REPORTED_TASK_TRACE",
+      "fix_status": "REFERENCE_ONLY",
+      "proposed_mitigation": "Check full positive-and-negative applicability before read; distinguish tool attempt vs host selection",
+      "upstream_issues": [
+        34712
+      ],
+      "test_class": "LOCAL_SYNTHETIC_REFERENCE",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "05-skill_setup_refresh_failure",
+      "topic_id": "05",
+      "statement": "Separate setup refresh had errors blocked the excluded skill body-load",
+      "evidence_class": "USER_REPORTED_TASK_TRACE",
+      "fix_status": "DOCUMENT_ONLY",
+      "proposed_mitigation": "Expose setup error and retry policy independently from routing decision",
+      "upstream_issues": [],
+      "test_class": "NO_DIRECT_HOST_REPRO",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "05-skill_host_telemetry",
+      "topic_id": "05",
+      "statement": "No host-provided complete selection/body-load evidence was available",
+      "evidence_class": "USER_REPORTED",
+      "fix_status": "PROPOSED_ONLY",
+      "proposed_mitigation": "Expose redacted structured selection and body-load receipt IDs",
+      "upstream_issues": [],
+      "test_class": "NO_DIRECT_HOST_REPRO",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "05-cross_host_catalog_drift",
+      "topic_id": "05",
+      "statement": "SkillSuite visibility and plugin availability differed across Chat/Work/Codex surfaces",
+      "evidence_class": "USER_REPORTED",
+      "fix_status": "PROPOSED_ONLY",
+      "proposed_mitigation": "Host/version/skill-root fingerprint per session; do not assume cross-host parity",
+      "upstream_issues": [],
+      "test_class": "NO_DIRECT_HOST_REPRO",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "06-approval_timeout",
+      "topic_id": "06",
+      "statement": "Native Computer Use app approval timed out before probehost creation",
+      "evidence_class": "USER_REPORTED_RUN_AND_PUBLIC_UPSTREAM",
+      "fix_status": "PROPOSED_ONLY",
+      "proposed_mitigation": "Separate approval/request/expiry receipts and provide supported reconnect flow",
+      "upstream_issues": [
+        26358
+      ],
+      "test_class": "NO_DIRECT_HOST_REPRO",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "06-cursor_access_denied",
+      "topic_id": "06",
+      "statement": "Native input GetCursorPos failed 0x80070005",
+      "evidence_class": "USER_REPORTED_RUN_AND_PUBLIC_UPSTREAM",
+      "fix_status": "PROPOSED_ONLY",
+      "proposed_mitigation": "Distinguish current input desktop, granted app target and correct OS-permitted path",
+      "upstream_issues": [
+        53300
+      ],
+      "test_class": "NO_DIRECT_HOST_REPRO",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "06-input_desktop_denied",
+      "topic_id": "06",
+      "statement": "Input desktop ACCESS_DENIED_5 in local GUI probes",
+      "evidence_class": "USER_REPORTED_RUN",
+      "fix_status": "PROPOSED_ONLY",
+      "proposed_mitigation": "Fail closed with actionable approval/desktop state; no UAC/ACL bypass",
+      "upstream_issues": [],
+      "test_class": "NO_DIRECT_HOST_REPRO",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "06-capture_timeout",
+      "topic_id": "06",
+      "statement": "Capture timed out and UIAutomation unavailable during local probe",
+      "evidence_class": "USER_REPORTED_RUN_AND_PUBLIC_UPSTREAM",
+      "fix_status": "PROPOSED_ONLY",
+      "proposed_mitigation": "Require capture+input+visible state+process close as separate acknowledgments",
+      "upstream_issues": [
+        25178,
+        53300
+      ],
+      "test_class": "NO_DIRECT_HOST_REPRO",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "06-native_reattach_unknown",
+      "topic_id": "06",
+      "statement": "No supported reattach action was exposed in the examined run",
+      "evidence_class": "USER_REPORTED_RUN",
+      "fix_status": "DOCUMENT_ONLY",
+      "proposed_mitigation": "Vendor support to confirm recovery; do not fabricate APIs",
+      "upstream_issues": [],
+      "test_class": "NO_DIRECT_HOST_REPRO",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "07-ssh_stdin_crlf",
+      "topic_id": "07",
+      "statement": "Text-mode cross-runtime stdin mutated line endings",
+      "evidence_class": "USER_REPORTED_RUN",
+      "fix_status": "REFERENCE_IMPLEMENTED",
+      "proposed_mitigation": "Write binary stdin and compare sent/received bytes in local canary",
+      "upstream_issues": [],
+      "test_class": "LOCAL_SYNTHETIC_REFERENCE",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "07-guest_record_schema",
+      "topic_id": "07",
+      "statement": "Guest delimiter and output record schema mismatch",
+      "evidence_class": "USER_REPORTED_RUN",
+      "fix_status": "REFERENCE_IMPLEMENTED",
+      "proposed_mitigation": "Validate exact framed bytes, type, cardinality and completion marker",
+      "upstream_issues": [],
+      "test_class": "LOCAL_SYNTHETIC_REFERENCE",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "07-missing_guest_main",
+      "topic_id": "07",
+      "statement": "Guest main() not invoked, output empty with zero exit",
+      "evidence_class": "USER_REPORTED_RUN",
+      "fix_status": "REFERENCE_IMPLEMENTED",
+      "proposed_mitigation": "Direct entrypoint and semantic completion regression",
+      "upstream_issues": [],
+      "test_class": "LOCAL_SYNTHETIC_REFERENCE",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "07-systemd_secret_stop",
+      "topic_id": "07",
+      "statement": "VM110 SYSTEMD_UNIT_LIST was stopped by SECRET_BOUNDARY_STOP prior to runtime discovery",
+      "evidence_class": "USER_REPORTED_RUN",
+      "fix_status": "PROPOSED_ONLY",
+      "proposed_mitigation": "Server-side narrow structural allowlist; fail-closed protected candidates and coverage counts",
+      "upstream_issues": [],
+      "test_class": "NO_DIRECT_HOST_REPRO",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "07-service_coverage",
+      "topic_id": "07",
+      "statement": "Discovery source limit could omit relevant candidates",
+      "evidence_class": "USER_REPORTED_RISK",
+      "fix_status": "PROPOSED_ONLY",
+      "proposed_mitigation": "Bounded coverage receipt listing unknown/unread categories; do not claim complete discovery",
+      "upstream_issues": [],
+      "test_class": "NO_DIRECT_HOST_REPRO",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "07-mailcert_gate",
+      "topic_id": "07",
+      "statement": "MailCert Gate B remains independently restricted",
+      "evidence_class": "USER_REPORTED_RUN",
+      "fix_status": "DOCUMENT_ONLY",
+      "proposed_mitigation": "Do not reuse consumed live gates or infer authorization from readiness",
+      "upstream_issues": [],
+      "test_class": "NO_DIRECT_HOST_REPRO",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "08-msb5021_cancellation",
+      "topic_id": "08",
+      "statement": "OwnerBridge two no-restore Release builds ended exit 1 MSB5021 without preceding cause log",
+      "evidence_class": "SOURCE_REVIEWED",
+      "fix_status": "DOCUMENT_ONLY",
+      "proposed_mitigation": "Capture first cancellation trigger, process tree and binlog; no source blame from MSB5021 alone",
+      "upstream_issues": [],
+      "test_class": "NO_DIRECT_HOST_REPRO",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "08-ownerbridge_product_boundary",
+      "topic_id": "08",
+      "statement": "Three projects and 30 C# files correspond to OwnerBridge only, not complete AngelWings",
+      "evidence_class": "SOURCE_REVIEWED",
+      "fix_status": "DOCUMENT_ONLY",
+      "proposed_mitigation": "Require project/assembly/function contract and runtime proof before full-product PASS",
+      "upstream_issues": [],
+      "test_class": "NO_DIRECT_HOST_REPRO",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "08-mocks_vs_real_guests",
+      "topic_id": "08",
+      "statement": "Passing mock tests missed generated guest output and entrypoint defects",
+      "evidence_class": "USER_REPORTED_RUN",
+      "fix_status": "REFERENCE_IMPLEMENTED",
+      "proposed_mitigation": "Run actual generated program through local synthetic transport and strict parser",
+      "upstream_issues": [],
+      "test_class": "LOCAL_SYNTHETIC_REFERENCE",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "08-warn_exit_zero",
+      "topic_id": "08",
+      "statement": "Historical forensic helper could return exit 0 despite WARN",
+      "evidence_class": "USER_REPORTED_SOURCE_REVIEW",
+      "fix_status": "PROPOSED_ONLY",
+      "proposed_mitigation": "Nonzero exit for blocking incomplete/failed gates; test status and process code",
+      "upstream_issues": [],
+      "test_class": "NO_DIRECT_HOST_REPRO",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "08-incomplete_scan_pass",
+      "topic_id": "08",
+      "statement": "Metadata scan reported 2947 denied directories and 161 skipped reparse points",
+      "evidence_class": "SOURCE_REVIEWED",
+      "fix_status": "DOCUMENT_ONLY",
+      "proposed_mitigation": "Scope and coverage explicit; never promote partial scan to full source authority",
+      "upstream_issues": [],
+      "test_class": "NO_DIRECT_HOST_REPRO",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "08-evidence_source_drift",
+      "topic_id": "08",
+      "statement": "Historic PASS/current and proof vs approval frequently conflated",
+      "evidence_class": "LOCAL_REPORT_AND_SOURCE_REVIEWED",
+      "fix_status": "PROPOSED_ONLY",
+      "proposed_mitigation": "Versioned immutable receipt with schema, source digest and validity stage",
+      "upstream_issues": [],
+      "test_class": "NO_DIRECT_HOST_REPRO",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "09-desktop_turn_start",
+      "topic_id": "09",
+      "statement": "Windows app could show starting UI without turn/start acknowledgment",
+      "evidence_class": "PUBLIC_UPSTREAM",
+      "fix_status": "PROPOSED_ONLY",
+      "proposed_mitigation": "Separate APP_READY/THREAD_ACK/TURN_ACK/EXEC_ACK and committed result",
+      "upstream_issues": [
+        49518
+      ],
+      "test_class": "NO_DIRECT_HOST_REPRO",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "09-ios_project_drift",
+      "topic_id": "09",
+      "statement": "iOS and desktop can show different project assignments for same thread",
+      "evidence_class": "PUBLIC_UPSTREAM",
+      "fix_status": "PROPOSED_ONLY",
+      "proposed_mitigation": "Canonical project/thread revision and drift readback",
+      "upstream_issues": [
+        36454
+      ],
+      "test_class": "NO_DIRECT_HOST_REPRO",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "09-remote_compaction_stall",
+      "topic_id": "09",
+      "statement": "Remote compaction context errors left a saved thread unusable",
+      "evidence_class": "PUBLIC_UPSTREAM",
+      "fix_status": "PROPOSED_ONLY",
+      "proposed_mitigation": "Bounded retry, durable snapshot and explicit resumable error",
+      "upstream_issues": [
+        43963
+      ],
+      "test_class": "NO_DIRECT_HOST_REPRO",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "09-writer_lock_handoff",
+      "topic_id": "09",
+      "statement": "iOS remote may leave desktop session locked after remote close",
+      "evidence_class": "PUBLIC_UPSTREAM",
+      "fix_status": "PROPOSED_ONLY",
+      "proposed_mitigation": "Writer-lease transfer with fencing token and timeout, no blind lock removal",
+      "upstream_issues": [
+        51429
+      ],
+      "test_class": "NO_DIRECT_HOST_REPRO",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "09-client_payload_replay",
+      "topic_id": "09",
+      "statement": "Media and tool attachments not always replayed identically across clients",
+      "evidence_class": "SOURCE_REVIEWED_AND_UPSTREAM",
+      "fix_status": "PROPOSED_ONLY",
+      "proposed_mitigation": "Stable redacted artifact handles and pagination with explicit unavailable state",
+      "upstream_issues": [],
+      "test_class": "NO_DIRECT_HOST_REPRO",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "09-ui_timestamp_anomaly",
+      "topic_id": "09",
+      "statement": "A suspicious January timestamp was visible in an October Codex interface",
+      "evidence_class": "USER_REPORTED_SCREEN",
+      "fix_status": "DOCUMENT_ONLY",
+      "proposed_mitigation": "Inspect stored epoch/client timezone before asserting persistence corruption",
+      "upstream_issues": [],
+      "test_class": "NO_DIRECT_HOST_REPRO",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "10-archive_metadata_only",
+      "topic_id": "10",
+      "statement": "1,749,996 members verified by archive inventory, not every member content as Vault source",
+      "evidence_class": "USER_REPORTED_FORENSIC",
+      "fix_status": "DOCUMENT_ONLY",
+      "proposed_mitigation": "Content reads of bounded manifests and candidate roots; preserve historical context",
+      "upstream_issues": [],
+      "test_class": "NO_DIRECT_HOST_REPRO",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "10-vault_path_hits",
+      "topic_id": "10",
+      "statement": "3,123 Vault path hits but zero directly bound Vault csproj/sln; current identity unknown",
+      "evidence_class": "USER_REPORTED_FORENSIC",
+      "fix_status": "DOCUMENT_ONLY",
+      "proposed_mitigation": "Resolve project manifests, namespace and code, never count path hits as source files",
+      "upstream_issues": [],
+      "test_class": "NO_DIRECT_HOST_REPRO",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "10-family_1134_plus_5",
+      "topic_id": "10",
+      "statement": "One complete 1,134-part archive family and a separate incomplete 5-part family reported",
+      "evidence_class": "USER_REPORTED_FORENSIC",
+      "fix_status": "DOCUMENT_ONLY",
+      "proposed_mitigation": "Keep families disjoint by digest and provenance; never substitute parts",
+      "upstream_issues": [],
+      "test_class": "NO_DIRECT_HOST_REPRO",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "10-first_keyword_misclassification",
+      "topic_id": "10",
+      "statement": "First-product-keyword path classifier can misassign GuardApp and other sources",
+      "evidence_class": "SOURCE_REVIEWED_REPORT",
+      "fix_status": "PROPOSED_ONLY",
+      "proposed_mitigation": "Multi-label classification with explicit abstention and exact project binding",
+      "upstream_issues": [],
+      "test_class": "NO_DIRECT_HOST_REPRO",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "10-fixture_recursive_delete",
+      "topic_id": "10",
+      "statement": "A synthetic fixture creator recursively removes an existing destination",
+      "evidence_class": "SOURCE_REVIEWED_REPORT",
+      "fix_status": "PROPOSED_ONLY",
+      "proposed_mitigation": "Refuse pre-existing roots; never accept volume/workspace roots as fixture target",
+      "upstream_issues": [],
+      "test_class": "NO_DIRECT_HOST_REPRO",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "10-source_recovery_no_current",
+      "topic_id": "10",
+      "statement": "Found old source trees are not proof of current/active product",
+      "evidence_class": "SOURCE_REVIEWED_AND_USER_REPORT",
+      "fix_status": "PROPOSED_ONLY",
+      "proposed_mitigation": "Bind live root manifest plus exact hashes, tests and active state before Current",
+      "upstream_issues": [],
+      "test_class": "NO_DIRECT_HOST_REPRO",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "11-false_vendor_pass",
+      "topic_id": "11",
+      "statement": "0.4.0-rc1 planner mapped shortened vendor Goo to Google Chrome and PASS_FIXED",
+      "evidence_class": "DIRECT_LOCAL_REPRO",
+      "fix_status": "FIXED_IN_LOCAL_CANDIDATE",
+      "proposed_mitigation": "Exact normalized vendor identity and explicit aliases with negative tests",
+      "upstream_issues": [],
+      "test_class": "LOCAL_SYNTHETIC_REFERENCE",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "11-bearer_redaction_gap",
+      "topic_id": "11",
+      "statement": "0.4.0-rc1 free text leaked Bearer credentials after partial key redaction",
+      "evidence_class": "DIRECT_LOCAL_REPRO",
+      "fix_status": "FIXED_IN_LOCAL_CANDIDATE",
+      "proposed_mitigation": "Full credential-scheme header redaction; negative publication canaries",
+      "upstream_issues": [],
+      "test_class": "LOCAL_SYNTHETIC_REFERENCE",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "11-wheel_record_gap",
+      "topic_id": "11",
+      "statement": "0.4.0-rc1 wheel verifier overlooked duplicate archive members and invalid RECORD",
+      "evidence_class": "DIRECT_LOCAL_REPRO",
+      "fix_status": "FIXED_IN_LOCAL_CANDIDATE",
+      "proposed_mitigation": "Reject duplicates/unsafe paths; verify every RECORD digest, size, source byte and metadata version",
+      "upstream_issues": [],
+      "test_class": "LOCAL_SYNTHETIC_REFERENCE",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "11-version_evidence_drift",
+      "topic_id": "11",
+      "statement": "Historical candidate evidence was labeled current and changelog headings repeated",
+      "evidence_class": "SOURCE_REVIEWED",
+      "fix_status": "FIXED_IN_LOCAL_CANDIDATE",
+      "proposed_mitigation": "New 0.4.1-rc1 evidence with explicit historical references; one changelog heading",
+      "upstream_issues": [],
+      "test_class": "LOCAL_SYNTHETIC_REFERENCE",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    },
+    {
+      "id": "11-release_ci_pending",
+      "topic_id": "11",
+      "statement": "Native Windows GitHub CI and actual FPP host validation are not performed here",
+      "evidence_class": "CURRENT_GATE_STATUS",
+      "fix_status": "NOT_IMPLEMENTED",
+      "proposed_mitigation": "Require real Windows CI, versioned FPP receipt and owner push authority before public release",
+      "upstream_issues": [],
+      "test_class": "NO_DIRECT_HOST_REPRO",
+      "vendor_binary_fixed": false,
+      "authoritative_root_cause_proven": false
+    }
+  ]
+}

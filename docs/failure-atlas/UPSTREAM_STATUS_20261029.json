@@ -1,0 +1,99 @@
+{
+  "schema": "vyronforge.upstream-issues/1",
+  "retrieval_date": "2026-10-29",
+  "repository": "openai/codex",
+  "interpretation": "PUBLIC_ISSUE_STATE_NOT_RUNTIME_ROOT_CAUSE_PROOF",
+  "issues": [
+    {
+      "number": 24855,
+      "url": "https://github.com/openai/codex/issues/24855",
+      "state": "open",
+      "updated_at": "2026-10-15T02:56:31Z"
+    },
+    {
+      "number": 25178,
+      "url": "https://github.com/openai/codex/issues/25178",
+      "state": "open",
+      "updated_at": "2026-10-14T16:11:33Z"
+    },
+    {
+      "number": 26358,
+      "url": "https://github.com/openai/codex/issues/26358",
+      "state": "open",
+      "updated_at": "2026-06-10T06:18:46Z"
+    },
+    {
+      "number": 34712,
+      "url": "https://github.com/openai/codex/issues/34712",
+      "state": "open",
+      "updated_at": "2026-07-22T09:29:02Z"
+    },
+    {
+      "number": 36454,
+      "url": "https://github.com/openai/codex/issues/36454",
+      "state": "open",
+      "updated_at": "2026-10-25T13:56:43Z"
+    },
+    {
+      "number": 38765,
+      "url": "https://github.com/openai/codex/issues/38765",
+      "state": "open",
+      "updated_at": "2026-10-15T21:30:05Z"
+    },
+    {
+      "number": 41486,
+      "url": "https://github.com/openai/codex/issues/41486",
+      "state": "open",
+      "updated_at": "2026-09-24T09:40:08Z"
+    },
+    {
+      "number": 43343,
+      "url": "https://github.com/openai/codex/issues/43343",
+      "state": "open",
+      "updated_at": "2026-10-22T18:59:04Z"
+    },
+    {
+      "number": 43963,
+      "url": "https://github.com/openai/codex/issues/43963",
+      "state": "open",
+      "updated_at": "2026-09-30T12:35:09Z"
+    },
+    {
+      "number": 46037,
+      "url": "https://github.com/openai/codex/issues/46037",
+      "state": "open",
+      "updated_at": "2026-09-16T22:03:18Z"
+    },
+    {
+      "number": 48666,
+      "url": "https://github.com/openai/codex/issues/48666",
+      "state": "open",
+      "updated_at": "2026-10-08T02:03:16Z"
+    },
+    {
+      "number": 49518,
+      "url": "https://github.com/openai/codex/issues/49518",
+      "state": "open",
+      "updated_at": "2026-09-30T14:41:42Z"
+    },
+    {
+      "number": 51429,
+      "url": "https://github.com/openai/codex/issues/51429",
+      "state": "open",
+      "updated_at": "2026-10-06T19:33:35Z"
+    },
+    {
+      "number": 53300,
+      "url": "https://github.com/openai/codex/issues/53300",
+      "state": "open",
+      "updated_at": "2026-10-12T07:30:43Z"
+    },
+    {
+      "number": 55161,
+      "url": "https://github.com/openai/codex/issues/55161",
+      "state": "open",
+      "updated_at": "2026-10-19T18:33:10Z"
+    }
+  ],
+  "note": "An open issue does not prove the current vendor build is affected or that a patch has not shipped."
+}

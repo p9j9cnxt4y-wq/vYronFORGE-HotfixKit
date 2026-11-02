@@ -1,0 +1,192 @@
+{
+  "schema": "vyronforge.qa-20-repetitions/1",
+  "run_on": "2026-10-29",
+  "platform": "Linux Python 3.13.5",
+  "round_count": 20,
+  "test_executions": 3600,
+  "content_check_executions": 700,
+  "results": [
+    {
+      "round": 1,
+      "tests_executed": 180,
+      "failed_tests": 0,
+      "content_checks": 35,
+      "content_failures": 0,
+      "test_log_sha256": "de472281b40f35236b614bd3c2d0197068caa72bdf1e79d9cee9eaf640699998",
+      "status": "PASS_LOCAL"
+    },
+    {
+      "round": 2,
+      "tests_executed": 180,
+      "failed_tests": 0,
+      "content_checks": 35,
+      "content_failures": 0,
+      "test_log_sha256": "238e29a74b8fdeeec970222e30e2fcf0c47a09eacbe1d18bc6b5b190e99064c3",
+      "status": "PASS_LOCAL"
+    },
+    {
+      "round": 3,
+      "tests_executed": 180,
+      "failed_tests": 0,
+      "content_checks": 35,
+      "content_failures": 0,
+      "test_log_sha256": "ac616cd235aea58ccffcebf8e439d2231a699d4720f2c9a814cf4e0aa59b1c25",
+      "status": "PASS_LOCAL"
+    },
+    {
+      "round": 4,
+      "tests_executed": 180,
+      "failed_tests": 0,
+      "content_checks": 35,
+      "content_failures": 0,
+      "test_log_sha256": "8ddf38dfb6ce550334007b743aee4a36ce7023360c7bb95b981dc9db52c36d71",
+      "status": "PASS_LOCAL"
+    },
+    {
+      "round": 5,
+      "tests_executed": 180,
+      "failed_tests": 0,
+      "content_checks": 35,
+      "content_failures": 0,
+      "test_log_sha256": "586f222fce24da8f428a9a3b046b82abda778e7e5d1c5112afa56b6de5ced876",
+      "status": "PASS_LOCAL"
+    },
+    {
+      "round": 6,
+      "tests_executed": 180,
+      "failed_tests": 0,
+      "content_checks": 35,
+      "content_failures": 0,
+      "test_log_sha256": "f7f212fac56161890154c9079eda1679d1a6a23a3f255acbb68934fb805ed9f5",
+      "status": "PASS_LOCAL"
+    },
+    {
+      "round": 7,
+      "tests_executed": 180,
+      "failed_tests": 0,
+      "content_checks": 35,
+      "content_failures": 0,
+      "test_log_sha256": "3554c995341cd751a95dc3a4ec3b3610748f4f8073e019e3c7030012cafab191",
+      "status": "PASS_LOCAL"
+    },
+    {
+      "round": 8,
+      "tests_executed": 180,
+      "failed_tests": 0,
+      "content_checks": 35,
+      "content_failures": 0,
+      "test_log_sha256": "69dc7d97ab81c9996af128b1267616ea838b956f337ae5c8de3f8878e75674c1",
+      "status": "PASS_LOCAL"
+    },
+    {
+      "round": 9,
+      "tests_executed": 180,
+      "failed_tests": 0,
+      "content_checks": 35,
+      "content_failures": 0,
+      "test_log_sha256": "43937803d58830d984b80acaa3acf4894eb51228f6d39658fb78fe44dbf954c5",
+      "status": "PASS_LOCAL"
+    },
+    {
+      "round": 10,
+      "tests_executed": 180,
+      "failed_tests": 0,
+      "content_checks": 35,
+      "content_failures": 0,
+      "test_log_sha256": "281701c66b36bdac439f17e72d682d597570bd7a26d452aa6b6873b636a88490",
+      "status": "PASS_LOCAL"
+    },
+    {
+      "round": 11,
+      "tests_executed": 180,
+      "failed_tests": 0,
+      "content_checks": 35,
+      "content_failures": 0,
+      "test_log_sha256": "de4b773d1705061eb67aa118e7a7bf56c1a6cc4399801942eb778f5a75823c8c",
+      "status": "PASS_LOCAL"
+    },
+    {
+      "round": 12,
+      "tests_executed": 180,
+      "failed_tests": 0,
+      "content_checks": 35,
+      "content_failures": 0,
+      "test_log_sha256": "72e1f4736af8bedeaeff6f38ca2ab052cf04f48ed50f78d0e5c398d1d7f5561e",
+      "status": "PASS_LOCAL"
+    },
+    {
+      "round": 13,
+      "tests_executed": 180,
+      "failed_tests": 0,
+      "content_checks": 35,
+      "content_failures": 0,
+      "test_log_sha256": "f6bc04a652ee4e59b634c3566460b13d08200e07bb99d29807fee49d16dfacfc",
+      "status": "PASS_LOCAL"
+    },
+    {
+      "round": 14,
+      "tests_executed": 180,
+      "failed_tests": 0,
+      "content_checks": 35,
+      "content_failures": 0,
+      "test_log_sha256": "fb2a7b65122f035399e38bebba9ee2d5050f57afda77191845c767f294db77e5",
+      "status": "PASS_LOCAL"
+    },
+    {
+      "round": 15,
+      "tests_executed": 180,
+      "failed_tests": 0,
+      "content_checks": 35,
+      "content_failures": 0,
+      "test_log_sha256": "716036a66bcbb7dc675c5699d9543ab86fcc4a75167acadd65216f0a675a0016",
+      "status": "PASS_LOCAL"
+    },
+    {
+      "round": 16,
+      "tests_executed": 180,
+      "failed_tests": 0,
+      "content_checks": 35,
+      "content_failures": 0,
+      "test_log_sha256": "3dbcc7012d51ef2c6aa4935107e1146d36dba5c291f0d89cb01da091bd612d26",
+      "status": "PASS_LOCAL"
+    },
+    {
+      "round": 17,
+      "tests_executed": 180,
+      "failed_tests": 0,
+      "content_checks": 35,
+      "content_failures": 0,
+      "test_log_sha256": "18507cd004378f26f7b3a3a14d94c041df098635048a6ad5f9836ce30b8a7405",
+      "status": "PASS_LOCAL"
+    },
+    {
+      "round": 18,
+      "tests_executed": 180,
+      "failed_tests": 0,
+      "content_checks": 35,
+      "content_failures": 0,
+      "test_log_sha256": "13ebbc0c988808bebaf136f1c71bc9e74da9a21462a704399be856a8d8127738",
+      "status": "PASS_LOCAL"
+    },
+    {
+      "round": 19,
+      "tests_executed": 180,
+      "failed_tests": 0,
+      "content_checks": 35,
+      "content_failures": 0,
+      "test_log_sha256": "1403b3faef665f44b477739161568e94402651d6ced0812dda9a743354d3b10d",
+      "status": "PASS_LOCAL"
+    },
+    {
+      "round": 20,
+      "tests_executed": 180,
+      "failed_tests": 0,
+      "content_checks": 35,
+      "content_failures": 0,
+      "test_log_sha256": "a47fe4ba3ab8761a4b023880263f7e830a078ef188d4a4513e0243e52ce023d6",
+      "status": "PASS_LOCAL"
+    }
+  ],
+  "external_host_gates": "NOT_RUN",
+  "disclaimer": "Repetition establishes deterministic local checks, not vendor root-cause proof or Windows CI status"
+}

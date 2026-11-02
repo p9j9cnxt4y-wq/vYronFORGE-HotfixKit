@@ -1,0 +1,20 @@
+{
+  "actual_vendor_client_fixed": false,
+  "classification_guard": "Require bounded process/memory/time budgets; all local tests use pure budget arithmetic, no resource stress.",
+  "evidence_class": "PUBLIC_UPSTREAM + USER_REPORTED + HISTORICAL_RECORD_SUMMARY",
+  "finding_summary": "Git-process accumulation, 98% RAM report (#48666), commit memory exhaustion (#38765); C: full and reported BSOD double fault remain distinct.",
+  "id": "03",
+  "links": [
+    "https://github.com/openai/codex/issues/48666",
+    "https://github.com/openai/codex/issues/38765"
+  ],
+  "production_actions_executed": false,
+  "schema": "vyronforge.failure-atlas.casepack/1",
+  "slug": "process-memory-and-os-crashes",
+  "status": "REFERENCE_CANDIDATE_NOT_RELEASED",
+  "test_module": "test_failure_atlas_03.py",
+  "title": "Process storms, virtual memory, Windows disk pressure and kernel crashes",
+  "source_record_as_of": "2026-10-24",
+  "reviewed_as_of": "2026-10-29",
+  "publication_status": "NOT_PUBLISHED"
+}

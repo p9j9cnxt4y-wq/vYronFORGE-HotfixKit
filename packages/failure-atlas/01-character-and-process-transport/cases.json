@@ -1,0 +1,20 @@
+{
+  "actual_vendor_client_fixed": false,
+  "classification_guard": "Preserve byte-identical input/output and require structured completion; never infer a vendor binary fix from synthetic tests.",
+  "evidence_class": "PUBLIC_UPSTREAM + USER_REPORTED + SYNTHETIC_REPRO",
+  "finding_summary": "Windows composer escaping (#41486, #46037); text-mode LF/CRLF; literal tab; Python main() not invoked.",
+  "id": "01",
+  "links": [
+    "https://github.com/openai/codex/issues/41486",
+    "https://github.com/openai/codex/issues/46037"
+  ],
+  "production_actions_executed": false,
+  "schema": "vyronforge.failure-atlas.casepack/1",
+  "slug": "character-and-process-transport",
+  "status": "REFERENCE_CANDIDATE_NOT_RELEASED",
+  "test_module": "test_failure_atlas_01.py",
+  "title": "Byte integrity, escaping, subprocess and guest entrypoints",
+  "source_record_as_of": "2026-10-24",
+  "reviewed_as_of": "2026-10-29",
+  "publication_status": "NOT_PUBLISHED"
+}

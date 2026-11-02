@@ -1,0 +1,89 @@
+{
+  "forgeprime_product_runtime": "NOT_VALIDATED",
+  "publication_status": "NOT_PUBLISHED",
+  "remote_ci": "NOT_RUN",
+  "repository_candidate": "v0.4.1-rc1",
+  "schema": "vyronforge.failure-atlas.index/1",
+  "source_base_hotfixkit": "v0.3.0-rc1",
+  "topics": [
+    {
+      "evidence_class": "PUBLIC_UPSTREAM + USER_REPORTED + SYNTHETIC_REPRO",
+      "id": "01",
+      "name": "character-and-process-transport",
+      "test_module": "test_failure_atlas_01.py",
+      "title": "Byte integrity, escaping, subprocess and guest entrypoints"
+    },
+    {
+      "evidence_class": "PUBLIC_UPSTREAM + HISTORICAL_USER_REPORTED",
+      "id": "02",
+      "name": "filesystem-and-data-loss",
+      "test_module": "test_failure_atlas_02.py",
+      "title": "Destructive file operations and volume boundaries"
+    },
+    {
+      "evidence_class": "PUBLIC_UPSTREAM + USER_REPORTED + HISTORICAL_RECORD_SUMMARY",
+      "id": "03",
+      "name": "process-memory-and-os-crashes",
+      "test_module": "test_failure_atlas_03.py",
+      "title": "Process storms, virtual memory, Windows disk pressure and kernel crashes"
+    },
+    {
+      "evidence_class": "SOURCE_REVIEWED + PUBLIC_UPSTREAM + LOCAL_CLOSURE_REPORTED",
+      "id": "04",
+      "name": "workspace-source-readiness",
+      "test_module": "test_failure_atlas_04.py",
+      "title": "Worktree identity, materialization, FORGEPRIME preconditions and authority"
+    },
+    {
+      "evidence_class": "PUBLIC_UPSTREAM + USER_REPORTED_TASK_TRACE",
+      "id": "05",
+      "name": "skill-routing-and-refresh",
+      "test_module": "test_failure_atlas_05.py",
+      "title": "Implicit skill overtrigger and setup refresh failures"
+    },
+    {
+      "evidence_class": "PUBLIC_UPSTREAM + USER_REPORTED_RUN",
+      "id": "06",
+      "name": "native-computer-use",
+      "test_module": "test_failure_atlas_06.py",
+      "title": "App consent, cursor, input desktop and screenshot capture"
+    },
+    {
+      "evidence_class": "USER_REPORTED_RUN + SYNTHETIC_REPRO",
+      "id": "07",
+      "name": "ssh-qga-secret-boundary",
+      "test_module": "test_failure_atlas_07.py",
+      "title": "Remote transport contracts, structured systemd discovery and secret-safe results"
+    },
+    {
+      "evidence_class": "SOURCE_REVIEWED + USER_REPORTED",
+      "id": "08",
+      "name": "build-test-and-evidence",
+      "test_module": "test_failure_atlas_08.py",
+      "title": "Build cancellation, test completeness, fail-closed status and evidence checks"
+    },
+    {
+      "evidence_class": "SOURCE_REVIEWED + PUBLIC_UPSTREAM",
+      "id": "09",
+      "name": "desktop-sync-and-session",
+      "test_module": "test_failure_atlas_09.py",
+      "title": "Windows app lifecycle, mobile drift, compaction and writer leases"
+    },
+    {
+      "evidence_class": "USER_REPORTED_INVENTORY + SOURCE_REVIEWED",
+      "id": "10",
+      "name": "archive-and-source-recovery",
+      "test_module": "test_failure_atlas_10.py",
+      "title": "Archive safety, Vault source candidates and source authority"
+    },
+    {
+      "evidence_class": "PUBLIC_REPO_METADATA + DOCUMENTED_CONSTRAINT",
+      "id": "11",
+      "name": "publication-and-disclosure",
+      "test_module": "test_failure_atlas_11.py",
+      "title": "GitHub packaging, IP scope, redaction and publication gates"
+    }
+  ],
+  "version": "0.1.0-rc1",
+  "as_of": "2026-10-29"
+}

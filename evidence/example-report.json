@@ -1,0 +1,70 @@
+{
+  "schema": 2,
+  "snapshot": "2026-09-14",
+  "assets": 4,
+  "findings": [
+    {
+      "asset_id": "[REDACTED_IDENTIFIER]",
+      "policy_id": "MIKROTIK-MIKROTRICK-SEP2026",
+      "vendor": "MikroTik",
+      "severity": "CRITICAL",
+      "state": "DENY_VULNERABLE",
+      "score": 100,
+      "reason": "7.23.0 < 7.23.4 (7.23 branch)",
+      "action": "Upgrade to a fixed RouterOS release; remove SSH/management from untrusted networks; inspect Flagged state, users, scripts and configuration after upgrade.",
+      "verify": "Installed RouterOS is on a fixed branch release and no untrusted management exposure remains.",
+      "sources": [
+        "https://mikrotik.com/supportsec/september-2026-vulnerability/"
+      ]
+    },
+    {
+      "asset_id": "[REDACTED_IDENTIFIER]",
+      "policy_id": "VM2-SEP2026",
+      "vendor": "vm2",
+      "severity": "CRITICAL",
+      "state": "DENY_VULNERABLE",
+      "score": 85,
+      "reason": "3.11.6 < 3.12.2",
+      "action": "Require vm2 >= 3.12.2 for this snapshot, reject dangerous NodeVM configurations, and do not use same-process vm2 as the sole boundary for hostile code.",
+      "verify": "Dependency gate passes and untrusted execution is additionally isolated at process/container/VM boundary.",
+      "sources": [
+        "https://github.com/patriksimek/vm2/security",
+        "https://www.npmjs.com/package/vm2"
+      ]
+    },
+    {
+      "asset_id": "[REDACTED_IDENTIFIER]",
+      "policy_id": "VMWARE-VMSA-2026-0007",
+      "vendor": "Broadcom/VMware",
+      "severity": "CRITICAL",
+      "state": "DENY_VULNERABLE",
+      "score": 85,
+      "reason": "below 26H1u1",
+      "action": "Upgrade VMware Workstation/Fusion 25H2 or 26H1 to 26H1u1. There is no vendor workaround.",
+      "verify": "Installed product version is 26H1u1 or later.",
+      "sources": [
+        "https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/SecurityAdvisories/0/38288"
+      ]
+    },
+    {
+      "asset_id": "[REDACTED_IDENTIFIER]",
+      "policy_id": "MS-WINDOWS-ACTIVE-2026",
+      "vendor": "Microsoft",
+      "severity": "HIGH",
+      "state": "REQUIRES_VENDOR_VERIFY",
+      "score": 75,
+      "reason": "vendor-specific patch state must be verified",
+      "action": "Install all currently applicable Microsoft security updates for the deployed Windows release; reboot if required; then re-scan. This group includes the September exploited privilege-escalation issues plus earlier 2026 actively exploited Netlogon/IKE issues. Do not treat successful installation as proof that prior exploitation did not occur.",
+      "verify": "No applicable security updates remain and installed OS build is at or above Microsoft fixed build for the deployed release.",
+      "sources": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-85880",
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-81963",
+        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+        "https://www.cert.europa.eu/publications/security-advisories/2026-007/",
+        "https://www.cert.europa.eu/publications/threat-intelligence/cb26-09/"
+      ]
+    }
+  ],
+  "unassessed_assets": [],
+  "terminal_status": "WARN_REMEDIATION_REQUIRED"
+}

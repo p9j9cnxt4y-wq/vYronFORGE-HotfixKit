@@ -1,0 +1,40 @@
+{
+  "at": "2026-10-24",
+  "baseline_source_archive_sha256": "48f6acfad37b885789c9f5fd5d00885237eb17cb92a111bac805c7d006e1129b",
+  "candidate": "0.4.0-rc1",
+  "codex_desktop_runtime": "NOT_RUN",
+  "combined_unittest": {
+    "errors": 0,
+    "failures": 0,
+    "passed": 141,
+    "run": 141
+  },
+  "environment": {
+    "os": "Linux",
+    "python": "3.13.5"
+  },
+  "forgeprime_actual_adapter": "NOT_RUN_UNBUNDLED",
+  "git_push": "NOT_DONE",
+  "github_release": "NOT_DONE",
+  "inherited_local_execution_smoke": {
+    "checks": 5,
+    "real_qga": false,
+    "remote_ssh": false,
+    "status": "PASS"
+  },
+  "inherited_tests": 69,
+  "native_windows_ci": "NOT_RUN",
+  "new_topic_unit_tests": 72,
+  "policy_snapshot_date": "2026-09-14",
+  "policy_source_coverage": "PASS_DATED_SNAPSHOT",
+  "schema": "vyronforge_failure_atlas_local_verification_v1",
+  "schema_topic_coherence": "PASS",
+  "source_publication_scanner": "PASS_LOCAL",
+  "terminal": "PASS_LOCAL_REFERENCE_WITH_HOST_AND_RELEASE_LIMITS",
+  "topic_count": 11,
+  "wheel": {
+    "content_verifier": "PASS",
+    "offline_build": "PASS",
+    "version": "0.4.0rc1"
+  }
+}

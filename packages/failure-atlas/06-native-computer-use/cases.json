@@ -1,0 +1,21 @@
+{
+  "actual_vendor_client_fixed": false,
+  "classification_guard": "Never claim a GUI probe passed without approval, capture, visible input and process close; no UAC/ACL workarounds.",
+  "evidence_class": "PUBLIC_UPSTREAM + USER_REPORTED_RUN",
+  "finding_summary": "Computer Use discovery succeeded while approval timed out and GetCursorPos/input desktop access denied (#53300, #26358, #25178).",
+  "id": "06",
+  "links": [
+    "https://github.com/openai/codex/issues/53300",
+    "https://github.com/openai/codex/issues/26358",
+    "https://github.com/openai/codex/issues/25178"
+  ],
+  "production_actions_executed": false,
+  "schema": "vyronforge.failure-atlas.casepack/1",
+  "slug": "native-computer-use",
+  "status": "REFERENCE_CANDIDATE_NOT_RELEASED",
+  "test_module": "test_failure_atlas_06.py",
+  "title": "App consent, cursor, input desktop and screenshot capture",
+  "source_record_as_of": "2026-10-24",
+  "reviewed_as_of": "2026-10-29",
+  "publication_status": "NOT_PUBLISHED"
+}

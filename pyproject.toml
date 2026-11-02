@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vyronforge-hotfixkit"
+version = "0.4.1rc1"
+description = "Fail-closed emergency remediation planner and defensive hotfix tooling"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "vYronFORGE."}]
+dependencies = []
+
+[project.scripts]
+vyf-hotfix = "vyronforge_hotfix.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"vyronforge_hotfix" = ["data/*.json"]

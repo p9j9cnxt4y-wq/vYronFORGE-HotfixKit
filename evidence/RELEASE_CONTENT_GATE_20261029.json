@@ -1,0 +1,187 @@
+{
+  "schema": "vyronforge-local-release-checks/1",
+  "checked_as_of": "2026-10-29",
+  "checks": [
+    {
+      "id": "01",
+      "name": "01-version-metadata",
+      "status": "PASS"
+    },
+    {
+      "id": "02",
+      "name": "02-python-module-version",
+      "status": "PASS"
+    },
+    {
+      "id": "03",
+      "name": "03-current-index-version",
+      "status": "PASS"
+    },
+    {
+      "id": "04",
+      "name": "04-historical-evidence-marked",
+      "status": "PASS"
+    },
+    {
+      "id": "05",
+      "name": "05-only-one-changelog-heading",
+      "status": "PASS"
+    },
+    {
+      "id": "06",
+      "name": "06-topics-count-eleven",
+      "status": "PASS"
+    },
+    {
+      "id": "07",
+      "name": "07-case-file-count-eleven",
+      "status": "PASS"
+    },
+    {
+      "id": "08",
+      "name": "08-topic-ids-unique",
+      "status": "PASS"
+    },
+    {
+      "id": "09",
+      "name": "09-topic-case-ids-match",
+      "status": "PASS"
+    },
+    {
+      "id": "10",
+      "name": "10-case-tests-exist",
+      "status": "PASS"
+    },
+    {
+      "id": "11",
+      "name": "11-no-prod-operations-claimed",
+      "status": "PASS"
+    },
+    {
+      "id": "12",
+      "name": "12-no-vendor-binary-fixed",
+      "status": "PASS"
+    },
+    {
+      "id": "13",
+      "name": "13-case-publication-status",
+      "status": "PASS"
+    },
+    {
+      "id": "14",
+      "name": "14-findings-count",
+      "status": "PASS"
+    },
+    {
+      "id": "15",
+      "name": "15-findings-unique",
+      "status": "PASS"
+    },
+    {
+      "id": "16",
+      "name": "16-findings-match-topic-scope",
+      "status": "PASS"
+    },
+    {
+      "id": "17",
+      "name": "17-no-attributed-proprietary-fix",
+      "status": "PASS"
+    },
+    {
+      "id": "18",
+      "name": "18-no-unproven-internal-root-cause-claims",
+      "status": "PASS"
+    },
+    {
+      "id": "19",
+      "name": "19-upstream-issues-exact-retrieval-date",
+      "status": "PASS"
+    },
+    {
+      "id": "20",
+      "name": "20-upstream-links-are-published-IDs",
+      "status": "PASS"
+    },
+    {
+      "id": "21",
+      "name": "21-upstream-URL-owner-correct",
+      "status": "PASS"
+    },
+    {
+      "id": "22",
+      "name": "22-source-dated-policy-snapshot",
+      "status": "PASS"
+    },
+    {
+      "id": "23",
+      "name": "23-dated-policy-count",
+      "status": "PASS"
+    },
+    {
+      "id": "24",
+      "name": "24-eu-advisory-count",
+      "status": "PASS"
+    },
+    {
+      "id": "25",
+      "name": "25-license-present-MIT",
+      "status": "PASS"
+    },
+    {
+      "id": "26",
+      "name": "26-no-proprietary-binary-files",
+      "status": "PASS"
+    },
+    {
+      "id": "27",
+      "name": "27-no-Git-subtree-published",
+      "status": "PASS"
+    },
+    {
+      "id": "28",
+      "name": "28-no-explicit-FPP-as-gate-substitute",
+      "status": "PASS"
+    },
+    {
+      "id": "29",
+      "name": "29-CI-plans-Windows-and-Linux",
+      "status": "PASS"
+    },
+    {
+      "id": "30",
+      "name": "30-scripts-default-audit-only",
+      "status": "PASS"
+    },
+    {
+      "id": "31",
+      "name": "31-historical-evidence-still-present",
+      "status": "PASS"
+    },
+    {
+      "id": "32",
+      "name": "32-no-publish-claim-in-metadata",
+      "status": "PASS"
+    },
+    {
+      "id": "33",
+      "name": "33-fpp-actual-host-not-claimed",
+      "status": "PASS"
+    },
+    {
+      "id": "34",
+      "name": "34-windows-native-CI-not-claimed",
+      "status": "PASS"
+    },
+    {
+      "id": "35",
+      "name": "35-review-artefacts-exist",
+      "status": "PASS"
+    }
+  ],
+  "passed": 35,
+  "total": 35,
+  "status": "PASS_LOCAL_CONTENT",
+  "windows_remote_ci": "NOT_RUN",
+  "fpp_host_attestation": "NOT_RUN",
+  "github_published": "NOT_DONE"
+}

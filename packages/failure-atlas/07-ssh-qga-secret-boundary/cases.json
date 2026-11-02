@@ -1,0 +1,17 @@
+{
+  "actual_vendor_client_fixed": false,
+  "classification_guard": "Strict allowlisted structured metadata, per-run HMAC correlation, explicit coverage, no SSH/VM access or secrets.",
+  "evidence_class": "USER_REPORTED_RUN + SYNTHETIC_REPRO",
+  "finding_summary": "Generated SSH/QGA controller CRLF, tab and missing entrypoint; later SYSTEMD_UNIT_LIST -> SECRET_BOUNDARY_STOP; actual VM status unproven.",
+  "id": "07",
+  "links": [],
+  "production_actions_executed": false,
+  "schema": "vyronforge.failure-atlas.casepack/1",
+  "slug": "ssh-qga-secret-boundary",
+  "status": "REFERENCE_CANDIDATE_NOT_RELEASED",
+  "test_module": "test_failure_atlas_07.py",
+  "title": "Remote transport contracts, structured systemd discovery and secret-safe results",
+  "source_record_as_of": "2026-10-24",
+  "reviewed_as_of": "2026-10-29",
+  "publication_status": "NOT_PUBLISHED"
+}

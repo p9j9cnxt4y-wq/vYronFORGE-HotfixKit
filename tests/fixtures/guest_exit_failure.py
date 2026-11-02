@@ -1,0 +1,6 @@
+"""Synthetic nonzero exit control."""
+import sys
+
+
+if __name__ == "__main__":
+    sys.exit(2)

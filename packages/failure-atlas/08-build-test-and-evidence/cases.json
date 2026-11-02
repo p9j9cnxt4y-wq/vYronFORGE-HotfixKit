@@ -1,0 +1,17 @@
+{
+  "actual_vendor_client_fixed": false,
+  "classification_guard": "Insufficient root-cause telemetry stays UNKNOWN; warnings and incomplete scans cannot return PASS.",
+  "evidence_class": "SOURCE_REVIEWED + USER_REPORTED",
+  "finding_summary": "OwnerBridge no-restore MSB5021 cancellation; partial scanner permission errors; incorrect WARN-as-zero and first-keyword classification risks.",
+  "id": "08",
+  "links": [],
+  "production_actions_executed": false,
+  "schema": "vyronforge.failure-atlas.casepack/1",
+  "slug": "build-test-and-evidence",
+  "status": "REFERENCE_CANDIDATE_NOT_RELEASED",
+  "test_module": "test_failure_atlas_08.py",
+  "title": "Build cancellation, test completeness, fail-closed status and evidence checks",
+  "source_record_as_of": "2026-10-24",
+  "reviewed_as_of": "2026-10-29",
+  "publication_status": "NOT_PUBLISHED"
+}

@@ -1,0 +1,12 @@
+name: Bug report
+description: Reproducible defect in vYronFORGE HotfixKit
+title: "[bug] "
+body:
+  - type: textarea
+    id: problem
+    attributes: {label: Problem, description: "Describe the defect without secrets or private infrastructure data."}
+    validations: {required: true}
+  - type: textarea
+    id: reproduce
+    attributes: {label: Reproduction, description: "Minimal non-destructive reproduction."}
+    validations: {required: true}

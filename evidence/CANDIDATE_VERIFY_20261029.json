@@ -1,0 +1,62 @@
+{
+  "schema": "vyronforge-hotfixkit-local-final-candidate/1",
+  "date": "2026-10-29",
+  "candidate": "0.4.1-rc1",
+  "runtime_env": "Linux Python 3.13.5",
+  "sources": "v0.4.0-rc1 historical 105-file repository candidate and prior v0.3.0-rc1 snapshot; no upstream copied code",
+  "findings_reviewed": 62,
+  "topics": 11,
+  "original_tests": 141,
+  "new_hardening_tests": 39,
+  "total_tests_per_round": 180,
+  "test_repetitions": 20,
+  "test_executions": 3600,
+  "static_independent_content_checks": 35,
+  "content_check_executions": 700,
+  "pub_repo_check": "PUBLIC_EMPTY_AS_OF_20261029",
+  "upstream_issue_ids_checked": 15,
+  "strict_local_wheel": {
+    "result": "PASS",
+    "record_hashes": "VERIFY_EACH",
+    "record_sizes": "VERIFY_EACH",
+    "local_source_bytes": "VERIFY_EACH",
+    "duplicate_paths": "DENY"
+  },
+  "fixes_in_candidate": [
+    "exact vendor matching",
+    "Bearer/basic and structured credential redaction",
+    "wheel duplicate/path/RECORD/source-identity verifier",
+    "candidate/historical version reconciliation"
+  ],
+  "synthetic_reference_only": [
+    "Python subprocess byte integrity",
+    "guest parser and main entrypoint",
+    "failure class oracles"
+  ],
+  "unfixed_external": [
+    "OpenAI proprietary Desktop binary",
+    "actual Codex skill router",
+    "Computer Use service",
+    "Proxmox/VM110",
+    "BSOD root cause"
+  ],
+  "limitations": {
+    "native_windows_ci": "NOT_RUN",
+    "actual_forgeprime_host": "NOT_RUN",
+    "cross_process_fpp_replay": "NOT_RUN",
+    "user_pc_runtime": "NOT_RUN",
+    "github_push": "NOT_DONE",
+    "github_release": "NOT_DONE",
+    "current_vendor_security_advisories": "NOT_RECHECKED_2026_09_14_SNAPSHOT_ONLY"
+  },
+  "publication_gate": "BLOCKED_EXTERNAL_HOST_AND_OWNER_GATE_NOT_RECONCILED",
+  "checks": [
+    "TESTS_20_ROUNDS_PASS",
+    "CONTENT_CHECKS_35_PER_ROUND_PASS",
+    "WHEEL_RECORD_AND_SOURCE_BYTES_PASS",
+    "SOURCE_TREE_MANIFEST_PENDING_FINALIZATION",
+    "WIN_NATIVE_CI_NOT_RUN",
+    "FPP_HOST_NOT_BOUND",
+    "GITHUB_NO_PUSH"
+  ]
+}

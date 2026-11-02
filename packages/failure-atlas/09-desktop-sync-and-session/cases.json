@@ -1,0 +1,22 @@
+{
+  "actual_vendor_client_fixed": false,
+  "classification_guard": "Distinct thread/turn/execution acknowledgements; session state must remain unknown unless actual receipts exist.",
+  "evidence_class": "SOURCE_REVIEWED + PUBLIC_UPSTREAM",
+  "finding_summary": "Desktop turn/start not acknowledged (#49518), iOS project drift (#36454), compaction failure (#43963), writer lock (#51429).",
+  "id": "09",
+  "links": [
+    "https://github.com/openai/codex/issues/49518",
+    "https://github.com/openai/codex/issues/36454",
+    "https://github.com/openai/codex/issues/43963",
+    "https://github.com/openai/codex/issues/51429"
+  ],
+  "production_actions_executed": false,
+  "schema": "vyronforge.failure-atlas.casepack/1",
+  "slug": "desktop-sync-and-session",
+  "status": "REFERENCE_CANDIDATE_NOT_RELEASED",
+  "test_module": "test_failure_atlas_09.py",
+  "title": "Windows app lifecycle, mobile drift, compaction and writer leases",
+  "source_record_as_of": "2026-10-24",
+  "reviewed_as_of": "2026-10-29",
+  "publication_status": "NOT_PUBLISHED"
+}

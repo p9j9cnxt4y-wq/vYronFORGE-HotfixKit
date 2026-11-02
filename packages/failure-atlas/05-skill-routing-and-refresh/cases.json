@@ -1,0 +1,19 @@
+{
+  "actual_vendor_client_fixed": false,
+  "classification_guard": "Separate metadata, model/tool-attempt, actual body load and internal host selection. Local oracle cannot prove host routing.",
+  "evidence_class": "PUBLIC_UPSTREAM + USER_REPORTED_TASK_TRACE",
+  "finding_summary": "Synthetic Alpha frontmatter excludes ROUTE_ALPHA_EXCLUDE; excluded task attempted body read, but setup refresh prevented successful load (#34712).",
+  "id": "05",
+  "links": [
+    "https://github.com/openai/codex/issues/34712"
+  ],
+  "production_actions_executed": false,
+  "schema": "vyronforge.failure-atlas.casepack/1",
+  "slug": "skill-routing-and-refresh",
+  "status": "REFERENCE_CANDIDATE_NOT_RELEASED",
+  "test_module": "test_failure_atlas_05.py",
+  "title": "Implicit skill overtrigger and setup refresh failures",
+  "source_record_as_of": "2026-10-24",
+  "reviewed_as_of": "2026-10-29",
+  "publication_status": "NOT_PUBLISHED"
+}

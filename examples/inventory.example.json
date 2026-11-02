@@ -1,0 +1,36 @@
+{
+  "assets": [
+    {
+      "id": "endpoint-01",
+      "vendor": "Microsoft",
+      "product": "Windows",
+      "version": "10.0.0",
+      "internet_exposed": false,
+      "criticality": "standard"
+    },
+    {
+      "id": "router-01",
+      "vendor": "MikroTik",
+      "product": "RouterOS",
+      "version": "7.23.0",
+      "internet_exposed": true,
+      "criticality": "critical"
+    },
+    {
+      "id": "dev-sandbox-01",
+      "vendor": "vm2",
+      "product": "vm2",
+      "version": "3.11.6",
+      "internet_exposed": false,
+      "criticality": "critical"
+    },
+    {
+      "id": "hypervisor-01",
+      "vendor": "VMware",
+      "product": "VMware Workstation",
+      "version": "25H2",
+      "internet_exposed": false,
+      "criticality": "critical"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "actual_vendor_client_fixed": false,
+  "classification_guard": "No automatic push. Explicit owner review, offline test, native Windows CI, licensing and secret scan before GitHub release.",
+  "evidence_class": "PUBLIC_REPO_METADATA + DOCUMENTED_CONSTRAINT",
+  "finding_summary": "HotfixKit earlier GitHub repo empty, v0.3 local source candidate; upstream issue reuse; FORGEPRIME working name rights review.",
+  "id": "11",
+  "links": [],
+  "production_actions_executed": false,
+  "schema": "vyronforge.failure-atlas.casepack/1",
+  "slug": "publication-and-disclosure",
+  "status": "REFERENCE_CANDIDATE_NOT_RELEASED",
+  "test_module": "test_failure_atlas_11.py",
+  "title": "GitHub packaging, IP scope, redaction and publication gates",
+  "source_record_as_of": "2026-10-24",
+  "reviewed_as_of": "2026-10-29",
+  "publication_status": "NOT_PUBLISHED"
+}
