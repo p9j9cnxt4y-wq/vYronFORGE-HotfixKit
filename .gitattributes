@@ -1,0 +1,3 @@
+# Preserve exact release-manifest bytes on every Git checkout.
+# The source contains both LF and CRLF files; do not normalize either.
+* -text
