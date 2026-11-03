@@ -8,11 +8,13 @@ certification, a production-ready agent executor or a claim that every reported
 incident shares one root cause.
 
 
-**Version 0.4.1-rc1 — corrected local publication candidate; defensive, fail-closed vulnerability-response and execution-integrity tooling.**
+**Version 0.4.1 — local Stable candidate, not published.**
+
+The public prerelease [v0.4.1-rc1](https://github.com/p9j9cnxt4y-wq/vYronFORGE-HotfixKit/releases/tag/v0.4.1-rc1) was published and independently verified on 2026-11-02 at commit `081d99aee62a42e4e87b946291a24b8008b782f8`. Its four CI jobs passed. Those results apply to that RC commit, not to this changed candidate. Stable source push, tag and release require separate owner gates.
 
 HotfixKit is a bounded emergency remediation planner and verification pack. It does **not** claim to replace vendor patches, patch proprietary firmware, discover every vulnerability, or prove that a production environment is clean.
 
-The planned public repository contains only defensive policy metadata, audit/update helpers, fail-closed gates, benign synthetic regression tests, and reproducible verification evidence. Internal incident data, exploit chains, credentials, private endpoints, infrastructure identifiers and raw operator logs are intentionally excluded.
+The public RC repository contains only defensive policy metadata, audit/update helpers, fail-closed gates, benign synthetic regression tests, and reproducible verification evidence. Internal incident data, exploit chains, credentials, private endpoints, infrastructure identifiers and raw operator logs are intentionally excluded.
 
 ## Historical corrected candidate (2026-10-29)
 
@@ -23,15 +25,22 @@ The planned public repository contains only defensive policy metadata, audit/upd
 
 ## Current local preparation
 
-HOTFIXKIT-PUBLISH-013 adds a Git-checkout release-gate correction and its
-regression tests. The dated 180-test results above remain historical evidence.
-See [release-candidate notes](docs/RELEASE_NOTES_0.4.1-rc1.md). Exact current
-checks and asset hashes are recorded externally; no real FPP readiness,
-remote CI or publication is inferred from local tests.
+HOTFIXKIT-HARDENING-018 prepares version 0.4.1 from the published RC without
+changing the original checkout. New regression coverage addresses unknown versions,
+branch boundaries, duplicate inventory IDs, edition/component identity, Windows
+partial audit results and Linux package-manager failures.
+See [Stable candidate notes](docs/RELEASE_NOTES_0.4.1.md) and
+[manufacturer review](docs/POLICY_REVIEW_20261102.md). Exact candidate source hashes,
+tests and artifacts are bound in the separate owner-gate evidence. No candidate CI,
+deployment or Stable publication is claimed by the historical results below.
 
 ## Scope
 
-The policy snapshot is dated **2026-09-14** and currently contains **34 high-signal policy groups** selected from public vendor/security advisories. The existing policy snapshot was re-verified for publication on **2026-09-15**; this release candidate does **not** claim a fresh 2026-10-19 re-validation of all vendor advisories.
+The default snapshot is **2026-11-02**: 34 selected groups, 26 with a bounded
+manufacturer claim reviewed and 8 explicitly UNKNOWN. UNKNOWN groups cannot
+produce PASS_FIXED. The **2026-09-14 historical snapshot is preserved unchanged**
+and can be selected explicitly with `--policy`; its older thresholds are not current
+compliance evidence. Neither snapshot is a complete or live vulnerability feed.
 
 Representative coverage includes:
 
@@ -46,7 +55,7 @@ Representative coverage includes:
 - Citrix NetScaler and VDA operational regression detection
 - N-able N-central, JFrog Artifactory, SonicWall SMA1000
 - Gitea, MLflow, GitLab, ConnectWise ScreenConnect
-- Google Chrome September 2026 active-exploitation fixed-build gate
+- Google Chrome reviewed desktop baseline with explicit platform identity
 - selected Apple, Fortinet and Ivanti advisories
 - Linux CVE-2026-31431 mitigation guidance
 - vm2 dependency/configuration hard gate with outer-isolation requirement
@@ -79,13 +88,16 @@ python tools/verify_release_manifest.py
 
 ### Windows security updates
 
-Audit only:
+Audit cached metadata only (no online search; zero cached updates is not current compliance):
 
 ```powershell
 .\scripts\windows\patch-security-updates.ps1 -Mode Audit
 ```
 
-Apply currently applicable Microsoft security updates (administrator required):
+An explicitly authorized online audit may use `-Mode Audit -OnlineScan`.
+Partial search results fail with exit code 2.
+
+Apply currently applicable Microsoft security updates (separate operator authorization and administrator required):
 
 ```powershell
 .\scripts\windows\patch-security-updates.ps1 -Mode Apply
@@ -98,6 +110,8 @@ Apply currently applicable Microsoft security updates (administrator required):
 sudo ./scripts/linux/patch-security-updates.sh --apply
 ```
 
+Linux audit can contact configured repositories; obtain network authorization before running it. The local hardening run did not start a Linux guest or contact repositories.
+
 On apt systems without `unattended-upgrade`, the script intentionally refuses a broad automatic upgrade.
 
 ### Citrix VDA health gate
@@ -108,7 +122,7 @@ Read-only detection for the published September regression signatures:
 .\scripts\windows\citrix_vda_health.ps1 -LookbackHours 6
 ```
 
-Exit code `2` marks the VDA unhealthy for an external orchestrator/load balancer. The script does not uninstall Microsoft security updates.
+Exit code `2` marks the VDA unhealthy; code `3` means insufficient evidence. Missing BrokerAgent returns NOT_APPLICABLE. Event-log access failures never become healthy results. OS-specific out-of-band fixes are listed in CTX697101; absence of signatures does not prove compliance. The script does not uninstall Microsoft security updates.
 
 ### vm2 hard gate
 
@@ -178,3 +192,7 @@ Authoritative source URLs are embedded per policy group in `policies/critical-20
 ## License
 
 MIT.
+
+## Inventory identity and result limits
+
+Gitea requires `edition: "community"` or `edition: "enterprise"`; numeric versions from the two lines are not interchangeable. ScreenConnect requires `component: "client"` and the deployed client version. A server record cannot prove agent remediation. Unsupported/prerelease versions fail closed. `PASS_FIXED` means only the named policy comparison passed, never full security or support status.

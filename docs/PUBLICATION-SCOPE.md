@@ -1,3 +1,5 @@
+> Current status (2026-11-02): v0.4.1-rc1 is published at commit 081d99aee62a42e4e87b946291a24b8008b782f8. Version 0.4.1 is a separate, unpublished local candidate. Dated NOT_PUBLISHED/NOT_DONE entries describe their historical preparation time.
+
 # Public release boundary
 
 HotfixKit is intentionally published as a **defensive** repository.

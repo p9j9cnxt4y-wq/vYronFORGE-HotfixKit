@@ -1,0 +1,1174 @@
+{
+  "schema": 1,
+  "snapshot": "2026-11-02",
+  "default_unknown_state": "DENY",
+  "principles": [
+    "vendor binary patches remain vendor-owned",
+    "temporary containment never claims to be a permanent fix",
+    "actively exploited systems require compromise assessment after patching",
+    "unknown product/version state fails closed",
+    "network-changing actions require explicit operator apply flag"
+  ],
+  "items": [
+    {
+      "id": "MS-WINDOWS-ACTIVE-2026",
+      "vendor": "Microsoft",
+      "products": [
+        "Windows"
+      ],
+      "severity": "HIGH",
+      "cves": [
+        "CVE-2026-85880",
+        "CVE-2026-81963",
+        "CVE-2026-41089",
+        "CVE-2026-33824"
+      ],
+      "hotfix_strategy": "LOCAL_SUPPORTED_UPDATER",
+      "action": "Historical guidance only; obtain the current manufacturer advisory before action. Install all currently applicable Microsoft security updates for the deployed Windows release; reboot if required; then re-scan. This group includes the September exploited privilege-escalation issues plus earlier 2026 actively exploited Netlogon/IKE issues. Do not treat successful installation as proof that prior exploitation did not occur.",
+      "verify": "No applicable security updates remain and installed OS build is at or above Microsoft fixed build for the deployed release.",
+      "sources": [
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-85880",
+        "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-81963",
+        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+        "https://www.cert.europa.eu/publications/security-advisories/2026-007/",
+        "https://www.cert.europa.eu/publications/threat-intelligence/cb26-09/"
+      ],
+      "verification_status": "UNKNOWN",
+      "reviewed_on": "2026-11-02",
+      "review_note": "Full current manufacturer remediation statement not established in this bounded review; historical guidance requires vendor confirmation.",
+      "historical_exploitation_flag": true,
+      "exploitation_status": "UNKNOWN",
+      "actively_exploited": true,
+      "exploitation_priority_basis": "Preserve historical risk priority unless current manufacturer evidence explicitly updates it; not a fresh exploitation claim."
+    },
+    {
+      "id": "MIKROTIK-MIKROTRICK-SEP2026",
+      "vendor": "MikroTik",
+      "products": [
+        "RouterOS"
+      ],
+      "severity": "CRITICAL",
+      "cves": [
+        "CVE-2026-67276",
+        "CVE-2026-67277",
+        "CVE-2026-67278",
+        "CVE-2026-67279",
+        "CVE-2026-67281",
+        "CVE-2026-86060"
+      ],
+      "hotfix_strategy": "VENDOR_UPDATE_PLUS_CONTAINMENT",
+      "fixed_versions": {
+        "7.24": "7.24.3",
+        "7.23": "7.23.6",
+        "6.49": "6.49.21"
+      },
+      "action": "Upgrade to a fixed RouterOS release; remove SSH/management from untrusted networks; inspect Flagged state, users, scripts and configuration after upgrade.",
+      "verify": "Installed RouterOS is on a fixed branch release and no untrusted management exposure remains.",
+      "sources": [
+        "https://mikrotik.com/supportsec/september-2026-vulnerability/"
+      ],
+      "auto_compare_fixed_versions": true,
+      "verification_status": "VERIFIED",
+      "reviewed_on": "2026-11-02",
+      "review_note": "October 6 correction: the initial CVE-2026-67278 fix was incomplete. Reviewed aggregate minima are 7.24.3, 7.23.6 and 6.49.21; RouterOS 6 is unaffected by 67278/67281.",
+      "historical_exploitation_flag": true,
+      "exploitation_status": "VENDOR_CONFIRMED_FOR_67279",
+      "actively_exploited": true,
+      "exploitation_priority_basis": "Preserve historical risk priority unless current manufacturer evidence explicitly updates it; not a fresh exploitation claim.",
+      "review_sources": [
+        "https://mikrotik.com/supportsec/september-2026-vulnerability/"
+      ]
+    },
+    {
+      "id": "CHECKPOINT-VPN-SEP2026",
+      "vendor": "Check Point",
+      "products": [
+        "Security Gateway",
+        "Security Management Server",
+        "Spark Firewall"
+      ],
+      "severity": "CRITICAL",
+      "cves": [
+        "CVE-2026-85102",
+        "CVE-2026-93616"
+      ],
+      "hotfix_strategy": "VENDOR_HOTFIX_OR_LIVE_PATCH_PLUS_CONTAINMENT",
+      "action": "Apply the product-specific fixes from sk1000117 and sk1000171. Verify Gateway, Spark and Management independently; LivePatch Take 28/29 does not fix Management CVE-2026-93616. Review compromise indicators with vendor guidance.",
+      "verify": "Vendor patch state confirms protection for both CVEs and management exposure is restricted.",
+      "sources": [
+        "https://blog.checkpoint.com/security/security-advisory-action-required-active-exploitation-of-cve-2026-85102-and-a-management-pre-authentication-vulnerability-cve-2026-93616/",
+        "https://www.cert.europa.eu/publications/security-advisories/2026-012/"
+      ],
+      "verification_status": "VERIFIED",
+      "reviewed_on": "2026-11-02",
+      "review_note": "Manufacturer confirms exploitation of 85102 and 93616; exact Gateway/Management/Spark fixes require sk1000117 and sk1000171. LivePatch Take 28/29 does not address 93616.",
+      "historical_exploitation_flag": false,
+      "exploitation_status": "VENDOR_CONFIRMED",
+      "actively_exploited": true,
+      "exploitation_priority_basis": "Preserve historical risk priority unless current manufacturer evidence explicitly updates it; not a fresh exploitation claim.",
+      "historical_related_cves": [
+        "CVE-2026-85102",
+        "CVE-2026-85103"
+      ],
+      "review_sources": [
+        "https://blog.checkpoint.com/security/security-advisory-action-required-active-exploitation-of-cve-2026-85102-and-a-management-pre-authentication-vulnerability-cve-2026-93616/"
+      ]
+    },
+    {
+      "id": "SAP-SEP2026",
+      "vendor": "SAP",
+      "products": [
+        "SAP Kernel",
+        "SAP Extended Passport",
+        "SAP NetWeaver Message Server"
+      ],
+      "severity": "CRITICAL",
+      "cves": [
+        "CVE-2026-44756",
+        "CVE-2026-58240"
+      ],
+      "hotfix_strategy": "VENDOR_SECURITY_NOTE_PLUS_CONTAINMENT",
+      "action": "Apply SAP Security Notes 3747649 and 3759472 as applicable. Keep Message Server and administrative interfaces off untrusted networks.",
+      "verify": "Affected kernel/message-server components report patched versions and no untrusted exposure exists.",
+      "sources": [
+        "https://support.sap.com/en/my-support/knowledge-base/security-notes-news/september-2026.html",
+        "https://www.cert.europa.eu/publications/security-advisories/2026-011/"
+      ],
+      "verification_status": "VERIFIED",
+      "reviewed_on": "2026-11-02",
+      "review_note": "Notes 3747649 and 3759472 identify the kernel/Message Server issues; exact deployment fixes require SAP note access.",
+      "historical_exploitation_flag": false,
+      "exploitation_status": "UNKNOWN",
+      "actively_exploited": false,
+      "exploitation_priority_basis": "Preserve historical risk priority unless current manufacturer evidence explicitly updates it; not a fresh exploitation claim.",
+      "review_sources": [
+        "https://support.sap.com/en/my-support/knowledge-base/security-notes-news/september-2026.html"
+      ]
+    },
+    {
+      "id": "ADOBE-COMMERCE-APSB26-146",
+      "vendor": "Adobe",
+      "products": [
+        "Adobe Commerce",
+        "Magento Open Source"
+      ],
+      "severity": "CRITICAL",
+      "cves": [
+        "CVE-2026-71362",
+        "CVE-2026-75650",
+        "CVE-2026-76200"
+      ],
+      "hotfix_strategy": "VENDOR_HOTFIX_PLUS_COMPROMISE_ASSESSMENT",
+      "action": "Historical guidance only; obtain the current manufacturer advisory before action. Update Adobe Commerce/Magento to the applicable September 2026 security release (APSB26-138), then apply the CVE-2026-75650 hotfix required by APSB26-146. Review application logs, privileged credentials and filesystem state for compromise when the instance was exposed while vulnerable.",
+      "verify": "September 2026 security release is installed, the CVE-2026-75650 hotfix is confirmed present, and compromise assessment is complete for previously exposed instances.",
+      "sources": [
+        "https://helpx.adobe.com/security/products/magento/apsb26-146.html",
+        "https://helpx.adobe.com/security/products/magento/apsb26-138.html",
+        "https://helpx.adobe.com/security/products/magento/apsb26-92.html"
+      ],
+      "verification_status": "UNKNOWN",
+      "reviewed_on": "2026-11-02",
+      "review_note": "Full current manufacturer remediation statement not established in this bounded review; historical guidance requires vendor confirmation.",
+      "historical_exploitation_flag": true,
+      "exploitation_status": "UNKNOWN",
+      "actively_exploited": true,
+      "exploitation_priority_basis": "Preserve historical risk priority unless current manufacturer evidence explicitly updates it; not a fresh exploitation claim."
+    },
+    {
+      "id": "CISCO-NEXUS-CVE-2026-20212",
+      "vendor": "Cisco",
+      "products": [
+        "Nexus 9000 Silicon One"
+      ],
+      "severity": "CRITICAL",
+      "cves": [
+        "CVE-2026-20212"
+      ],
+      "hotfix_strategy": "VENDOR_FIXED_RELEASE_OR_TEMPORARY_LIVE_PROTECT",
+      "action": "Upgrade to a fixed NX-OS release. Live Protect shield lp00031 may be used only as temporary mitigation after deployment impact assessment.",
+      "verify": "Cisco Software Checker reports a fixed release; temporary shield is not counted as final remediation.",
+      "sources": [
+        "https://www.cisco.com/c/en/us/support/docs/csa/cisco-sa-n9k-s1-rce-EH8dEtr.html"
+      ],
+      "verification_status": "VERIFIED",
+      "reviewed_on": "2026-11-02",
+      "review_note": "Silicon One Nexus 9000 applicability and fixed release must be checked with Cisco Software Checker; Live Protect is temporary.",
+      "historical_exploitation_flag": false,
+      "exploitation_status": "VENDOR_NOT_AWARE_AT_ADVISORY_DATE",
+      "actively_exploited": false,
+      "exploitation_priority_basis": "Preserve historical risk priority unless current manufacturer evidence explicitly updates it; not a fresh exploitation claim.",
+      "review_sources": [
+        "https://www.cisco.com/c/en/us/support/docs/csa/cisco-sa-n9k-s1-rce-EH8dEtr.html"
+      ]
+    },
+    {
+      "id": "VMWARE-VMSA-2026-0007",
+      "vendor": "Broadcom/VMware",
+      "products": [
+        "VMware Workstation",
+        "VMware Fusion"
+      ],
+      "severity": "CRITICAL",
+      "cves": [
+        "CVE-2026-59346",
+        "CVE-2026-59347"
+      ],
+      "hotfix_strategy": "VENDOR_UPDATE",
+      "fixed_versions": {
+        "25H2": "26H1u1",
+        "26H1": "26H1u1"
+      },
+      "action": "Upgrade VMware Workstation/Fusion 25H2 or 26H1 to 26H1u1. There is no vendor workaround.",
+      "verify": "Installed product version is 26H1u1 or later.",
+      "sources": [
+        "https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/SecurityAdvisories/0/38288"
+      ],
+      "verification_status": "VERIFIED",
+      "reviewed_on": "2026-11-02",
+      "review_note": "VMSA-2026-0007 lists Workstation/Fusion 26H1u1 as the fix for 59346/59347.",
+      "historical_exploitation_flag": false,
+      "exploitation_status": "UNKNOWN",
+      "actively_exploited": false,
+      "exploitation_priority_basis": "Preserve historical risk priority unless current manufacturer evidence explicitly updates it; not a fresh exploitation claim.",
+      "review_sources": [
+        "https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/SecurityAdvisories/0/38288"
+      ]
+    },
+    {
+      "id": "PANOS-CVE-2026-0310",
+      "vendor": "Palo Alto Networks",
+      "products": [
+        "PAN-OS",
+        "PA-Series",
+        "VM-Series"
+      ],
+      "severity": "HIGH",
+      "cves": [
+        "CVE-2026-0310"
+      ],
+      "hotfix_strategy": "VENDOR_UPDATE_PLUS_MANAGEMENT_ISOLATION",
+      "action": "Upgrade to the fixed maintenance release for the installed PAN-OS branch; restrict management access to a dedicated trusted path.",
+      "verify": "Installed branch is at/above the vendor fixed release and management interface is not reachable from untrusted networks.",
+      "sources": [
+        "https://security.paloaltonetworks.com/CVE-2026-0310"
+      ],
+      "verification_status": "VERIFIED",
+      "reviewed_on": "2026-11-02",
+      "review_note": "Vendor advisory confirmed; deployment configuration and branch-specific solution require manual vendor verification.",
+      "historical_exploitation_flag": false,
+      "exploitation_status": "VENDOR_NOT_AWARE_AT_ADVISORY_DATE",
+      "actively_exploited": false,
+      "exploitation_priority_basis": "Preserve historical risk priority unless current manufacturer evidence explicitly updates it; not a fresh exploitation claim.",
+      "review_sources": [
+        "https://security.paloaltonetworks.com/CVE-2026-0310"
+      ]
+    },
+    {
+      "id": "VM2-SEP2026",
+      "vendor": "vm2",
+      "products": [
+        "vm2"
+      ],
+      "severity": "CRITICAL",
+      "cves": [],
+      "hotfix_strategy": "OPEN_SOURCE_DEPENDENCY_GATE_PLUS_PROCESS_ISOLATION",
+      "minimum_operational_baseline": "3.12.2",
+      "action": "Require vm2 >= 3.12.2 for this snapshot, reject dangerous NodeVM configurations, and do not use same-process vm2 as the sole boundary for hostile code.",
+      "verify": "Dependency gate passes and untrusted execution is additionally isolated at process/container/VM boundary.",
+      "sources": [
+        "https://github.com/patriksimek/vm2/security/advisories/GHSA-5h3f-q97h-ccvc",
+        "https://github.com/patriksimek/vm2/security/advisories/GHSA-2v2p-6j97-cjg9",
+        "https://github.com/patriksimek/vm2/security/advisories/GHSA-489w-w794-jq94",
+        "https://github.com/patriksimek/vm2/security",
+        "https://www.npmjs.com/package/vm2"
+      ],
+      "verification_status": "VERIFIED",
+      "reviewed_on": "2026-11-02",
+      "review_note": "Maintainer patched-version fields list 3.12.2 for the named advisories. Outer isolation remains required; this is not an absolute sandbox guarantee.",
+      "historical_exploitation_flag": false,
+      "exploitation_status": "UNKNOWN",
+      "actively_exploited": false,
+      "exploitation_priority_basis": "Preserve historical risk priority unless current manufacturer evidence explicitly updates it; not a fresh exploitation claim.",
+      "review_sources": [
+        "https://github.com/patriksimek/vm2/security/advisories/GHSA-5h3f-q97h-ccvc",
+        "https://github.com/patriksimek/vm2/security/advisories/GHSA-2v2p-6j97-cjg9",
+        "https://github.com/patriksimek/vm2/security/advisories/GHSA-489w-w794-jq94"
+      ]
+    },
+    {
+      "id": "CISCO-IOSXR-SEP2026",
+      "vendor": "Cisco",
+      "products": [
+        "IOS XR"
+      ],
+      "severity": "CRITICAL",
+      "cves": [
+        "CVE-2026-20274",
+        "CVE-2026-20275",
+        "CVE-2026-20276",
+        "CVE-2026-20277",
+        "CVE-2026-20278",
+        "CVE-2026-20279",
+        "CVE-2026-20280"
+      ],
+      "hotfix_strategy": "VENDOR_FIXED_RELEASE_OR_SMU_SET",
+      "fixed_versions": {
+        "26.2": "26.2.2",
+        "26.3": "26.3.1"
+      },
+      "action": "Upgrade to IOS XR 26.2.2 or 26.3.1 where applicable, or move to a supported train with the complete applicable SMU set. Cisco states there is no general workaround.",
+      "verify": "Running IOS XR release/SMU inventory matches Cisco fixed-software guidance for every applicable vulnerability class.",
+      "sources": [
+        "https://www.cisco.com/c/en/us/support/docs/csa/cisco-sa-hardening-iosxr-qg64NcM.html"
+      ],
+      "auto_compare_fixed_versions": true,
+      "verification_status": "VERIFIED",
+      "reviewed_on": "2026-11-02",
+      "review_note": "26.2.2/26.3.1 are first fixed releases; other trains need platform-specific SMUs. Generic automatic approval remains disabled.",
+      "historical_exploitation_flag": false,
+      "exploitation_status": "VENDOR_NOT_AWARE_AT_ADVISORY_DATE",
+      "actively_exploited": false,
+      "exploitation_priority_basis": "Preserve historical risk priority unless current manufacturer evidence explicitly updates it; not a fresh exploitation claim.",
+      "review_sources": [
+        "https://www.cisco.com/c/en/us/support/docs/csa/cisco-sa-hardening-iosxr-qg64NcM.html"
+      ]
+    },
+    {
+      "id": "ADOBE-ACROBAT-APSB26-141",
+      "vendor": "Adobe",
+      "products": [
+        "Adobe Acrobat",
+        "Acrobat Reader",
+        "Acrobat 2024"
+      ],
+      "severity": "CRITICAL",
+      "cves": [],
+      "hotfix_strategy": "VENDOR_UPDATE",
+      "fixed_versions": {
+        "Continuous": "26.002.21901",
+        "Classic 2024": "24.001.30429"
+      },
+      "action": "Update Acrobat/Reader Continuous to 26.002.21901 or later; update Acrobat 2024 Classic to 24.001.30429 or later.",
+      "verify": "Installed track reports at least the fixed Adobe release.",
+      "sources": [
+        "https://www.adobe.com/trust/security/products/acrobat/apsb26-141.html",
+        "https://helpx.adobe.com/security/products/acrobat/apsb26-141.html"
+      ],
+      "verification_status": "VERIFIED",
+      "reviewed_on": "2026-11-02",
+      "review_note": "Continuous 26.002.21901 and Classic 2024 24.001.30429 fixes confirmed; edition-specific manual gate retained.",
+      "historical_exploitation_flag": false,
+      "exploitation_status": "UNKNOWN",
+      "actively_exploited": false,
+      "exploitation_priority_basis": "Preserve historical risk priority unless current manufacturer evidence explicitly updates it; not a fresh exploitation claim.",
+      "review_sources": [
+        "https://www.adobe.com/trust/security/products/acrobat/apsb26-141.html"
+      ]
+    },
+    {
+      "id": "CITRIX-WINDOWS-SEP2026-REGRESSION",
+      "vendor": "Citrix/Microsoft",
+      "products": [
+        "Citrix VDA",
+        "Virtual Delivery Agent"
+      ],
+      "severity": "OPERATIONAL",
+      "cves": [],
+      "hotfix_strategy": "VENDOR_OS_SPECIFIC_OOB_UPDATE",
+      "action": "Use CTX697101 to select the Microsoft out-of-band update for the exact Windows release. Reboot and verify VDA registration and affected services; do not remove security updates automatically.",
+      "verify": "Confirm the OS-specific fix and perform VDA functional acceptance. Local event/service checks alone are insufficient.",
+      "sources": [
+        "https://support.citrix.com/external/article/CTX697101/issues-with-microsoft-windows-september.html"
+      ],
+      "verification_status": "VERIFIED",
+      "reviewed_on": "2026-11-02",
+      "review_note": "Citrix now lists Microsoft out-of-band fixes by OS. Signature absence alone does not establish patch compliance.",
+      "historical_exploitation_flag": false,
+      "exploitation_status": "UNKNOWN",
+      "actively_exploited": false,
+      "exploitation_priority_basis": "Preserve historical risk priority unless current manufacturer evidence explicitly updates it; not a fresh exploitation claim.",
+      "review_sources": [
+        "https://support.citrix.com/external/article/CTX697101/issues-with-microsoft-windows-september.html"
+      ]
+    },
+    {
+      "id": "NABLE-NCENTRAL-CVE-2026-86218",
+      "vendor": "N-able",
+      "products": [
+        "N-central"
+      ],
+      "severity": "CRITICAL",
+      "cves": [
+        "CVE-2026-86218"
+      ],
+      "hotfix_strategy": "VENDOR_HOTFIX_PLUS_COMPROMISE_ASSESSMENT",
+      "minimum_fixed_version": "2026.3.1.14",
+      "action": "Upgrade self-hosted N-central to 2026.3 HF4 build 2026.3.1.14 or later. Hosted N-central is vendor-patched. Treat exposed unpatched servers as compromise-assessment candidates.",
+      "verify": "Installed self-hosted build is >= 2026.3.1.14 and post-update authentication/admin configuration and logs have been reviewed.",
+      "sources": [
+        "https://status.n-able.com/2026/09/06/n-central-2026-3-hotfix-4-cve-2026-86218/",
+        "https://www.cyber.gc.ca/en/alerts-advisories/n-able-security-advisory-av26-885"
+      ],
+      "verification_status": "VERIFIED",
+      "reviewed_on": "2026-11-02",
+      "review_note": "Hotfix 4 build 2026.3.1.14 supersedes 2026.3.1.13 for CVE-2026-86218.",
+      "historical_exploitation_flag": true,
+      "exploitation_status": "UNKNOWN",
+      "actively_exploited": true,
+      "exploitation_priority_basis": "Preserve historical risk priority unless current manufacturer evidence explicitly updates it; not a fresh exploitation claim.",
+      "historical_related_cves": [
+        "CVE-2026-86218",
+        "CVE-2026-86207"
+      ],
+      "review_sources": [
+        "https://status.n-able.com/2026/09/06/n-central-2026-3-hotfix-4-cve-2026-86218/"
+      ]
+    },
+    {
+      "id": "JFROG-ARTIFACTORY-CVE-2026-82329",
+      "vendor": "JFrog",
+      "products": [
+        "Artifactory"
+      ],
+      "severity": "CRITICAL",
+      "cves": [
+        "CVE-2026-82329"
+      ],
+      "hotfix_strategy": "VENDOR_FIXED_BRANCH_PLUS_COMPROMISE_ASSESSMENT",
+      "auto_compare_fixed_versions": true,
+      "fixed_versions": {
+        "7.111": "7.111.21",
+        "7.117": "7.117.28",
+        "7.125": "7.125.20",
+        "7.133": "7.133.29",
+        "7.146": "7.146.38",
+        "7.161": "7.161.20"
+      },
+      "action": "Upgrade self-managed Artifactory to a fixed release for its branch or, preferably, the latest supported patch. Review administrator accounts, tokens, plugins and repository configuration after exposure.",
+      "verify": "Installed Artifactory branch is at/above the listed fixed build and privileged configuration/tokens have been reviewed.",
+      "sources": [
+        "https://docs.jfrog.com/releases/docs/jfrog-security-advisories",
+        "https://www.cyber.gc.ca/en/alerts-advisories/jfrog-security-advisory-av26-867"
+      ],
+      "verification_status": "VERIFIED",
+      "reviewed_on": "2026-11-02",
+      "review_note": "Published self-hosted fixed branch versions for CVE-2026-82329 confirmed; other historical related CVEs are not included in this automatic fixed-state claim.",
+      "historical_exploitation_flag": true,
+      "exploitation_status": "UNKNOWN",
+      "actively_exploited": true,
+      "exploitation_priority_basis": "Preserve historical risk priority unless current manufacturer evidence explicitly updates it; not a fresh exploitation claim.",
+      "historical_related_cves": [
+        "CVE-2026-82329",
+        "CVE-2026-42016",
+        "CVE-2026-42018"
+      ],
+      "review_sources": [
+        "https://docs.jfrog.com/releases/docs/jfrog-security-advisories"
+      ]
+    },
+    {
+      "id": "CITRIX-NETSCALER-AUG2026",
+      "vendor": "Citrix",
+      "products": [
+        "NetScaler ADC",
+        "NetScaler Gateway",
+        "Citrix ADC",
+        "Citrix Gateway"
+      ],
+      "severity": "CRITICAL",
+      "cves": [
+        "CVE-2026-19489",
+        "CVE-2026-19490"
+      ],
+      "hotfix_strategy": "VENDOR_UPDATE_PLUS_EDGE_COMPROMISE_ASSESSMENT",
+      "action": "Upgrade affected customer-managed NetScaler to 14.1-73.32+, 13.1-63.21+, 14.1-73.32 FIPS+, or 13.1-37.277+ for FIPS/NDcPP as applicable. No generic workaround is counted as remediation.",
+      "verify": "Installed NetScaler build meets the vendor minimum for its exact edition and affected Gateway/SAML/SIP preconditions have been reassessed.",
+      "sources": [
+        "https://support.citrix.com/external/article/CTX696939/netscaler-adc-and-netscaler-gateway-secu.html",
+        "https://www.cyber.gc.ca/en/alerts-advisories/citrix-security-advisory-av26-833",
+        "https://www.cert.europa.eu/publications/security-advisories/2026-010/"
+      ],
+      "verification_status": "VERIFIED",
+      "reviewed_on": "2026-11-02",
+      "review_note": "Vendor bulletin confirms 19489/19490. FIPS/NDcPP and configuration applicability remain manual.",
+      "historical_exploitation_flag": true,
+      "exploitation_status": "UNKNOWN",
+      "actively_exploited": true,
+      "exploitation_priority_basis": "Preserve historical risk priority unless current manufacturer evidence explicitly updates it; not a fresh exploitation claim.",
+      "review_sources": [
+        "https://support.citrix.com/external/article/CTX696939/netscaler-adc-and-netscaler-gateway-secu.html"
+      ]
+    },
+    {
+      "id": "SONICWALL-SMA1000-SEP2026",
+      "vendor": "SonicWall",
+      "products": [
+        "SMA 1000",
+        "SMA1000",
+        "SMA 6210",
+        "SMA6210",
+        "SMA 7210",
+        "SMA7210",
+        "SMA 8200v",
+        "SMA8200v"
+      ],
+      "severity": "CRITICAL",
+      "cves": [
+        "CVE-2026-83548",
+        "CVE-2026-83549",
+        "CVE-2026-102255",
+        "CVE-2026-102256",
+        "CVE-2026-102257",
+        "CVE-2026-102258"
+      ],
+      "hotfix_strategy": "VENDOR_HOTFIX_PLUS_REIMAGE_IF_IOC",
+      "auto_compare_fixed_versions": true,
+      "fixed_versions": {
+        "12.4.3": "12.4.3-03670",
+        "12.5.0": "12.5.0-03082"
+      },
+      "action": "Upgrade SMA1000 to 12.4.3-03526 or 12.5.0-02952 as applicable. If compromise indicators are found, re-image/redeploy and rotate user/admin passwords and TOTP material per vendor guidance.",
+      "verify": "Installed platform-hotfix is at/above the fixed build for the branch and vendor IoC review is complete.",
+      "sources": [
+        "https://www.sonicwall.com/support/notices/product-notice-sma-1000-series-affected-by-multiple-vulnerabilities-snwlid-2026-0017/kA1VN000002QP3G0AW",
+        "https://www.sonicwall.com/support/notices/product-notice-sma-1000-series-affected-by-multiple-vulnerabilities-snwlid-2026-0016/kA1VN000002AXmQ0AW",
+        "https://www.cyber.gc.ca/en/alerts-advisories/sonicwall-security-advisory-av26-872"
+      ],
+      "verification_status": "VERIFIED",
+      "reviewed_on": "2026-11-02",
+      "review_note": "October advisory adds four issues and replaces the September baseline with 12.4.3-03670 / 12.5.0-03082.",
+      "historical_exploitation_flag": true,
+      "exploitation_status": "VENDOR_CONFIRMED_FOR_SEPTEMBER_ISSUES_ONLY",
+      "actively_exploited": true,
+      "exploitation_priority_basis": "Preserve historical risk priority unless current manufacturer evidence explicitly updates it; not a fresh exploitation claim.",
+      "review_sources": [
+        "https://www.sonicwall.com/support/notices/product-notice-sma-1000-series-affected-by-multiple-vulnerabilities-snwlid-2026-0017/kA1VN000002QP3G0AW",
+        "https://www.sonicwall.com/support/notices/product-notice-sma-1000-series-affected-by-multiple-vulnerabilities-snwlid-2026-0016/kA1VN000002AXmQ0AW"
+      ]
+    },
+    {
+      "id": "CISCO-ASAFTD-CVE-2026-20349",
+      "vendor": "Cisco",
+      "products": [
+        "Adaptive Security Appliance",
+        "Cisco ASA",
+        "Secure Firewall Threat Defense",
+        "Firepower Threat Defense",
+        "FTD"
+      ],
+      "severity": "HIGH",
+      "cves": [
+        "CVE-2026-20349"
+      ],
+      "hotfix_strategy": "VENDOR_FIXED_RELEASE",
+      "action": "Upgrade ASA/FTD to a Cisco-fixed release for the deployed train. There is no vendor workaround; do not count rate limiting or signatures as final remediation.",
+      "verify": "Cisco Software Checker/advisory confirms the exact deployed ASA/FTD release is fixed for CVE-2026-20349.",
+      "sources": [
+        "https://www.cisco.com/c/en/us/support/docs/csa/cisco-sa-asaftd-vpn-dos-dzv4mQFF.html"
+      ],
+      "verification_status": "VERIFIED",
+      "reviewed_on": "2026-11-02",
+      "review_note": "Vendor fixes required for remote access SSL VPN issue; advisory reports no workaround. Determine exact affected release with vendor tools.",
+      "historical_exploitation_flag": true,
+      "exploitation_status": "UNKNOWN",
+      "actively_exploited": true,
+      "exploitation_priority_basis": "Preserve historical risk priority unless current manufacturer evidence explicitly updates it; not a fresh exploitation claim.",
+      "review_sources": [
+        "https://www.cisco.com/c/en/us/support/docs/csa/cisco-sa-asaftd-vpn-dos-dzv4mQFF.html"
+      ]
+    },
+    {
+      "id": "MS-SHAREPOINT-JUL2026-ACTIVE",
+      "vendor": "Microsoft",
+      "products": [
+        "SharePoint Server",
+        "SharePoint Server 2019",
+        "SharePoint Server 2016",
+        "SharePoint Server Subscription Edition"
+      ],
+      "severity": "CRITICAL",
+      "cves": [
+        "CVE-2026-50522",
+        "CVE-2026-56164",
+        "CVE-2026-58644",
+        "CVE-2026-32201",
+        "CVE-2026-45659",
+        "CVE-2026-20963",
+        "CVE-2026-26106",
+        "CVE-2026-26113",
+        "CVE-2026-26114"
+      ],
+      "hotfix_strategy": "VENDOR_SECURITY_UPDATE_PLUS_CREDENTIAL_ROTATION_AND_HUNT",
+      "action": "Historical guidance only; obtain the current manufacturer advisory before action. Install all applicable SharePoint cumulative/security updates through the current supported level. This policy covers the March and July 2026 actively exploited SharePoint families. For any internet-exposed instance that was vulnerable, enable/verify AMSI Full Mode where supported, perform compromise assessment, and rotate credentials/secrets and SharePoint machine keys that could have been exposed.",
+      "verify": "SharePoint farm build and required prerequisite updates match Microsoft guidance; PSConfig/update completion is verified and compromise assessment is closed.",
+      "sources": [
+        "https://www.cert.europa.eu/publications/security-advisories/2026-004/",
+        "https://www.cert.europa.eu/publications/security-advisories/2026-009/",
+        "https://msrc.microsoft.com/update-guide/releaseNote/2026-Jul"
+      ],
+      "verification_status": "UNKNOWN",
+      "reviewed_on": "2026-11-02",
+      "review_note": "Full current manufacturer remediation statement not established in this bounded review; historical guidance requires vendor confirmation.",
+      "historical_exploitation_flag": true,
+      "exploitation_status": "UNKNOWN",
+      "actively_exploited": true,
+      "exploitation_priority_basis": "Preserve historical risk priority unless current manufacturer evidence explicitly updates it; not a fresh exploitation claim."
+    },
+    {
+      "id": "GITEA-CVE-2026-60004",
+      "vendor": "Gitea",
+      "products": [
+        "Gitea"
+      ],
+      "severity": "CRITICAL",
+      "cves": [
+        "CVE-2026-60004"
+      ],
+      "hotfix_strategy": "OPEN_SOURCE_UPDATE_PLUS_REPOSITORY_REVIEW",
+      "action": "Upgrade Gitea to at least 1.27.1; prefer the latest supported release. Review repository hooks, service-account activity and host processes if the instance was reachable by untrusted users.",
+      "verify": "Gitea version is >= 1.27.1 and repository hook/configuration review shows no unauthorized persistence.",
+      "sources": [
+        "https://about.gitea.com/blog/gitea-enterprise-release-27-3-0/",
+        "https://www.cert.europa.eu/publications/threat-intelligence/cb26-09/"
+      ],
+      "verification_status": "VERIFIED",
+      "reviewed_on": "2026-11-02",
+      "review_note": "Community 1.27.1 and Enterprise 27.3.0 are distinct version lines; edition must be explicit.",
+      "historical_exploitation_flag": true,
+      "exploitation_status": "UNKNOWN",
+      "actively_exploited": true,
+      "exploitation_priority_basis": "Preserve historical risk priority unless current manufacturer evidence explicitly updates it; not a fresh exploitation claim.",
+      "fixed_versions_by_edition": {
+        "community": "1.27.1",
+        "enterprise": "27.3.0"
+      },
+      "review_sources": [
+        "https://about.gitea.com/blog/gitea-enterprise-release-27-3-0/"
+      ]
+    },
+    {
+      "id": "MLFLOW-CVE-2026-64849",
+      "vendor": "MLflow",
+      "products": [
+        "MLflow"
+      ],
+      "severity": "CRITICAL",
+      "cves": [
+        "CVE-2026-64849"
+      ],
+      "hotfix_strategy": "OPEN_SOURCE_UPDATE_PLUS_METADATA_EGRESS_CONTROL",
+      "minimum_fixed_version": "3.15.0",
+      "action": "Upgrade MLflow to >= 3.15.0 and keep the tracking server behind authentication/network controls. Block workload access to cloud metadata endpoints where not explicitly required.",
+      "verify": "MLflow is >= 3.15.0 and webhook/egress controls prevent access to loopback, internal-only and cloud-metadata targets.",
+      "sources": [
+        "https://github.com/mlflow/mlflow/security/advisories/GHSA-7gwp-5pfp-969j",
+        "https://github.com/advisories/GHSA-7gwp-5pfp-969j",
+        "https://www.cert.europa.eu/publications/threat-intelligence/cb26-09/"
+      ],
+      "verification_status": "VERIFIED",
+      "reviewed_on": "2026-11-02",
+      "review_note": "Original fix is 3.15.0; maintainer follow-up identifies IPv6-transition bypass fixes in 3.16.0. Conservative operational baseline updated.",
+      "historical_exploitation_flag": true,
+      "exploitation_status": "UNKNOWN",
+      "actively_exploited": true,
+      "exploitation_priority_basis": "Preserve historical risk priority unless current manufacturer evidence explicitly updates it; not a fresh exploitation claim.",
+      "minimum_operational_baseline": "3.16.0",
+      "review_sources": [
+        "https://github.com/mlflow/mlflow/security/advisories/GHSA-7gwp-5pfp-969j"
+      ]
+    },
+    {
+      "id": "SAP-CAP-CVE-2026-76969",
+      "vendor": "SAP",
+      "products": [
+        "SAP Cloud Application Programming Model",
+        "sap/cds-mtxs",
+        "SAP CAP"
+      ],
+      "severity": "CRITICAL",
+      "cves": [
+        "CVE-2026-76969"
+      ],
+      "hotfix_strategy": "VENDOR_SECURITY_NOTE",
+      "action": "Apply SAP Security Note 3798315 and update the affected sap/cds-mtxs line to the fixed release specified by SAP for the deployed branch.",
+      "verify": "Dependency/version inventory is outside the affected ranges and SAP Security Note 3798315 remediation is recorded.",
+      "sources": [
+        "https://support.sap.com/en/my-support/knowledge-base/security-notes-news/september-2026.html"
+      ],
+      "verification_status": "VERIFIED",
+      "reviewed_on": "2026-11-02",
+      "review_note": "Note 3798315 identifies affected CAP versions; no generic automatic fixed-version claim.",
+      "historical_exploitation_flag": false,
+      "exploitation_status": "UNKNOWN",
+      "actively_exploited": false,
+      "exploitation_priority_basis": "Preserve historical risk priority unless current manufacturer evidence explicitly updates it; not a fresh exploitation claim.",
+      "review_sources": [
+        "https://support.sap.com/en/my-support/knowledge-base/security-notes-news/september-2026.html"
+      ]
+    },
+    {
+      "id": "SAP-GUIJAVA-CVE-2026-66768",
+      "vendor": "SAP",
+      "products": [
+        "SAP GUI for Java"
+      ],
+      "severity": "CRITICAL",
+      "cves": [
+        "CVE-2026-66768"
+      ],
+      "hotfix_strategy": "VENDOR_SECURITY_NOTE",
+      "action": "Apply SAP Security Note 3781729 to affected SAP GUI for Java 8.10 deployments.",
+      "verify": "SAP GUI for Java deployment is patched according to Security Note 3781729.",
+      "sources": [
+        "https://support.sap.com/en/my-support/knowledge-base/security-notes-news/september-2026.html"
+      ],
+      "verification_status": "VERIFIED",
+      "reviewed_on": "2026-11-02",
+      "review_note": "Note 3781729 identifies GUI for Java 8.10; use the authenticated note for the applicable patch.",
+      "historical_exploitation_flag": false,
+      "exploitation_status": "UNKNOWN",
+      "actively_exploited": false,
+      "exploitation_priority_basis": "Preserve historical risk priority unless current manufacturer evidence explicitly updates it; not a fresh exploitation claim.",
+      "review_sources": [
+        "https://support.sap.com/en/my-support/knowledge-base/security-notes-news/september-2026.html"
+      ]
+    },
+    {
+      "id": "GOOGLE-CHROME-SEP2026-KEV",
+      "vendor": "Google",
+      "products": [
+        "Google Chrome",
+        "Chrome"
+      ],
+      "severity": "HIGH",
+      "cves": [
+        "CVE-2026-85046",
+        "CVE-2026-87491"
+      ],
+      "hotfix_strategy": "OPEN_SOURCE_VENDOR_UPDATE",
+      "action": "Update Chrome to at least 153.0.8010.36 on Linux and at least 153.0.8010.37 on Windows/macOS for this snapshot, then restart the browser so the updated binary is active. Managed fleets should enforce the update rather than relying on user restart.",
+      "verify": "Running Chrome version meets the fixed build for the asset platform and managed update status reports no pending restart/update.",
+      "sources": [
+        "https://chromereleases.googleblog.com/2026/10/",
+        "https://chromereleases.googleblog.com/2026/09/stable-channel-update-for-desktop_0808145027.html",
+        "https://www.cyber.gc.ca/en/alerts-advisories/google-security-advisory-av26-904",
+        "https://www.cyber.gc.ca/en/alerts-advisories/google-security-advisory-av26-883"
+      ],
+      "fixed_versions_by_platform": {
+        "windows": "156.0.8078.79",
+        "macos": "156.0.8078.79",
+        "linux": "156.0.8078.79"
+      },
+      "verification_status": "VERIFIED",
+      "reviewed_on": "2026-11-02",
+      "review_note": "October 29 desktop stable update: Windows/macOS 156.0.8078.79 or .80, Linux .79. Operational baseline only, not an exhaustive new CVE inventory.",
+      "historical_exploitation_flag": true,
+      "exploitation_status": "UNKNOWN",
+      "actively_exploited": true,
+      "exploitation_priority_basis": "Preserve historical risk priority unless current manufacturer evidence explicitly updates it; not a fresh exploitation claim.",
+      "review_sources": [
+        "https://chromereleases.googleblog.com/2026/10/"
+      ]
+    },
+    {
+      "id": "GITLAB-CVE-2026-85706",
+      "vendor": "GitLab",
+      "products": [
+        "GitLab Community Edition",
+        "GitLab Enterprise Edition",
+        "GitLab CE",
+        "GitLab EE",
+        "GitLab"
+      ],
+      "severity": "CRITICAL",
+      "cves": [
+        "CVE-2026-85706"
+      ],
+      "hotfix_strategy": "VENDOR_FIXED_BRANCH_PLUS_COMPROMISE_ASSESSMENT",
+      "auto_compare_fixed_versions": true,
+      "fixed_versions": {
+        "19.1": "19.1.8",
+        "19.2": "19.2.6",
+        "19.3": "19.3.2",
+        "19.0": "19.0.9",
+        "18.11": "18.11.12"
+      },
+      "action": "Upgrade GitLab immediately to 19.1.8, 19.2.6, 19.3.2 or a later supported fixed release. Review privileged users, tokens, hooks, runners and recent administrative changes when an affected instance was reachable by untrusted users.",
+      "verify": "Installed GitLab branch is at or above its fixed patch release and compromise review is complete for exposed affected instances.",
+      "sources": [
+        "https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-3-2-released/",
+        "https://about.gitlab.com/blog/tags/security-releases/",
+        "https://www.cyber.gc.ca/en/alerts-advisories/gitlab-security-advisory-av26-917"
+      ],
+      "verification_status": "VERIFIED",
+      "reviewed_on": "2026-11-02",
+      "review_note": "September 23 backports for 85706: 19.0.9 and 18.11.12, in addition to 19.1.8/19.2.6/19.3.2.",
+      "historical_exploitation_flag": true,
+      "exploitation_status": "VENDOR_REFERENCES_CISA_KEV",
+      "actively_exploited": true,
+      "exploitation_priority_basis": "Preserve historical risk priority unless current manufacturer evidence explicitly updates it; not a fresh exploitation claim.",
+      "review_sources": [
+        "https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-3-2-released/"
+      ]
+    },
+    {
+      "id": "APPLE-MACOS-SCREENSHARING-CVE-2026-65400",
+      "vendor": "Apple",
+      "products": [
+        "macOS Tahoe",
+        "macOS Sequoia",
+        "macOS Sonoma"
+      ],
+      "severity": "CRITICAL",
+      "cves": [
+        "CVE-2026-65400"
+      ],
+      "hotfix_strategy": "VENDOR_OS_UPDATE_PLUS_EXPOSURE_REVIEW",
+      "auto_compare_fixed_versions": true,
+      "fixed_versions": {
+        "26.6": "26.6.1",
+        "15.7": "15.7.9",
+        "14.8": "14.8.9"
+      },
+      "action": "Update supported macOS systems to the branch release that contains the Screen Sharing authentication fix. Disable or firewall Screen Sharing from untrusted networks when it is not explicitly required; investigate exposed vulnerable hosts for unauthorized access.",
+      "verify": "Running macOS is at/above the fixed branch release and Screen Sharing exposure is explicitly authorized and constrained.",
+      "sources": [
+        "https://support.apple.com/en-ca/148172",
+        "https://support.apple.com/de-li/148171",
+        "https://support.apple.com/de-lu/148170",
+        "https://www.cert.europa.eu/publications/threat-intelligence/cb26-09/"
+      ],
+      "verification_status": "VERIFIED",
+      "reviewed_on": "2026-11-02",
+      "review_note": "Screen Sharing fix confirmed in Sonoma 14.8.9, Sequoia 15.7.9 and Tahoe 26.6.1. No current exploitation assertion inferred.",
+      "historical_exploitation_flag": true,
+      "exploitation_status": "UNKNOWN",
+      "actively_exploited": true,
+      "exploitation_priority_basis": "Preserve historical risk priority unless current manufacturer evidence explicitly updates it; not a fresh exploitation claim.",
+      "review_sources": [
+        "https://support.apple.com/en-ca/148172",
+        "https://support.apple.com/de-li/148171",
+        "https://support.apple.com/de-lu/148170"
+      ]
+    },
+    {
+      "id": "SAP-COMMERCE-CVE-2026-58231",
+      "vendor": "SAP",
+      "products": [
+        "SAP Commerce Cloud",
+        "SAP Commerce Cloud Data Hub Adapter"
+      ],
+      "severity": "CRITICAL",
+      "cves": [
+        "CVE-2026-58231"
+      ],
+      "hotfix_strategy": "VENDOR_SECURITY_NOTE_PLUS_CURRENT_UPDATE_RELEASE",
+      "action": "Historical guidance only; obtain the current manufacturer advisory before action. Apply SAP Security Note 3771065 and move SAP Commerce Cloud 2211/JDK21 to a current supported update release. For previously exposed vulnerable deployments, review application/admin activity and integration credentials for compromise.",
+      "verify": "SAP Security Note 3771065 remediation is recorded and the deployment uses a current supported Commerce Cloud update release.",
+      "sources": [
+        "https://support.sap.com/en/my-support/knowledge-base/security-notes-news/august-2026.html",
+        "https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/12be4ac419604b01aabb1adeb2c4c8a2/1c6c687ad0ed4964bb43d409818d23a2.html",
+        "https://www.cert.europa.eu/publications/threat-intelligence/cb26-09/"
+      ],
+      "verification_status": "UNKNOWN",
+      "reviewed_on": "2026-11-02",
+      "review_note": "Full current manufacturer remediation statement not established in this bounded review; historical guidance requires vendor confirmation.",
+      "historical_exploitation_flag": true,
+      "exploitation_status": "UNKNOWN",
+      "actively_exploited": true,
+      "exploitation_priority_basis": "Preserve historical risk priority unless current manufacturer evidence explicitly updates it; not a fresh exploitation claim."
+    },
+    {
+      "id": "FORTINET-CVE-2025-25249-KEV",
+      "vendor": "Fortinet",
+      "products": [
+        "FortiOS"
+      ],
+      "severity": "CRITICAL",
+      "cves": [
+        "CVE-2025-25249"
+      ],
+      "hotfix_strategy": "VENDOR_FIXED_RELEASE_PLUS_COMPROMISE_ASSESSMENT",
+      "action": "Historical guidance only; obtain the current manufacturer advisory before action. Use the current Fortinet PSIRT advisory/upgrade-path tool for the deployed FortiOS train and move to a fixed supported release. Because CISA added CVE-2025-25249 to KEV in September 2026, exposed previously affected appliances require compromise assessment in addition to patching.",
+      "verify": "Fortinet PSIRT/upgrade-path guidance confirms the exact deployed release is not affected and compromise assessment is closed for previously exposed vulnerable systems.",
+      "sources": [
+        "https://www.fortiguard.com/psirt",
+        "https://www.cyber.gc.ca/en/alerts-advisories/fortinet-security-advisory-av26-023"
+      ],
+      "verification_status": "UNKNOWN",
+      "reviewed_on": "2026-11-02",
+      "review_note": "Full current manufacturer remediation statement not established in this bounded review; historical guidance requires vendor confirmation.",
+      "historical_exploitation_flag": true,
+      "exploitation_status": "UNKNOWN",
+      "actively_exploited": true,
+      "exploitation_priority_basis": "Preserve historical risk priority unless current manufacturer evidence explicitly updates it; not a fresh exploitation claim."
+    },
+    {
+      "id": "IVANTI-EPMM-2026-ACTIVE",
+      "vendor": "Ivanti",
+      "products": [
+        "Endpoint Manager Mobile",
+        "EPMM",
+        "Ivanti EPMM"
+      ],
+      "severity": "CRITICAL",
+      "cves": [
+        "CVE-2026-1281",
+        "CVE-2026-1340"
+      ],
+      "hotfix_strategy": "VENDOR_HOTFIX_PLUS_FORENSICS",
+      "action": "Historical guidance only; obtain the current manufacturer advisory before action. Apply the current Ivanti EPMM vendor hotfix/fixed supported release for CVE-2026-1281 and CVE-2026-1340. Preserve forensic evidence before remediation on exposed appliances and re-apply any vendor RPM hotfix after an upgrade if Ivanti guidance for the deployed train requires it.",
+      "verify": "Ivanti guidance confirms the exact deployed EPMM release/hotfix state is fixed and forensic review is closed for previously exposed vulnerable appliances.",
+      "sources": [
+        "https://www.cert.europa.eu/publications/security-advisories/2026-001/"
+      ],
+      "verification_status": "UNKNOWN",
+      "reviewed_on": "2026-11-02",
+      "review_note": "Full current manufacturer remediation statement not established in this bounded review; historical guidance requires vendor confirmation.",
+      "historical_exploitation_flag": true,
+      "exploitation_status": "UNKNOWN",
+      "actively_exploited": true,
+      "exploitation_priority_basis": "Preserve historical risk priority unless current manufacturer evidence explicitly updates it; not a fresh exploitation claim."
+    },
+    {
+      "id": "CISCO-SDWAN-FEB2026-ACTIVE",
+      "vendor": "Cisco",
+      "products": [
+        "Catalyst SD-WAN Controller",
+        "SD-WAN Controller",
+        "Catalyst SD-WAN Manager",
+        "SD-WAN Manager",
+        "vManage",
+        "vSmart"
+      ],
+      "severity": "CRITICAL",
+      "cves": [
+        "CVE-2026-20127",
+        "CVE-2026-20129",
+        "CVE-2026-20126",
+        "CVE-2026-20133",
+        "CVE-2026-20122",
+        "CVE-2026-20128"
+      ],
+      "hotfix_strategy": "VENDOR_FIXED_RELEASE_PLUS_HUNT",
+      "action": "Historical guidance only; obtain the current manufacturer advisory before action. Upgrade the deployed Catalyst SD-WAN Controller/Manager train to a Cisco-fixed supported release. Preserve evidence, review configuration and authentication/peering logs for unauthorized access, and remove direct Internet exposure from management/control-plane interfaces.",
+      "verify": "Cisco advisory/Software Checker confirms the exact deployed train is fixed and the compromise hunt/configuration review is closed.",
+      "sources": [
+        "https://www.cert.europa.eu/publications/security-advisories/2026-002/",
+        "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-sdwan-rpa-EHchtZk",
+        "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-sdwan-authbp-qwCX8D4v"
+      ],
+      "verification_status": "UNKNOWN",
+      "reviewed_on": "2026-11-02",
+      "review_note": "Full current manufacturer remediation statement not established in this bounded review; historical guidance requires vendor confirmation.",
+      "historical_exploitation_flag": true,
+      "exploitation_status": "UNKNOWN",
+      "actively_exploited": true,
+      "exploitation_priority_basis": "Preserve historical risk priority unless current manufacturer evidence explicitly updates it; not a fresh exploitation claim."
+    },
+    {
+      "id": "CITRIX-NETSCALER-MAR2026",
+      "vendor": "Citrix",
+      "products": [
+        "NetScaler ADC",
+        "NetScaler Gateway",
+        "Citrix ADC",
+        "Citrix Gateway"
+      ],
+      "severity": "CRITICAL",
+      "cves": [
+        "CVE-2026-3055",
+        "CVE-2026-4368"
+      ],
+      "hotfix_strategy": "VENDOR_UPDATE_PLUS_SESSION_INVALIDATION",
+      "action": "Update affected NetScaler ADC/Gateway to a currently supported fixed release. The March fixes began at 14.1-66.59, 13.1-62.23 and 13.1-37.262 FIPS/NDcPP; later August 2026 security builds supersede these. Restrict exposed Gateway/AAA access until updated and invalidate active/persistent sessions after patching.",
+      "verify": "Current Citrix guidance confirms the exact edition/build is fixed for both the March and later 2026 NetScaler advisories, and sessions were invalidated where required.",
+      "sources": [
+        "https://support.citrix.com/external/article/CTX696300/citrix-security-advisory-for-netscal.html",
+        "https://www.cert.europa.eu/publications/security-advisories/2026-003/"
+      ],
+      "verification_status": "VERIFIED",
+      "reviewed_on": "2026-11-02",
+      "review_note": "Vendor bulletin confirms 3055/4368; 4368 affects only build 14.1-66.54. Edition/configuration-specific manual verification retained.",
+      "historical_exploitation_flag": false,
+      "exploitation_status": "UNKNOWN",
+      "actively_exploited": false,
+      "exploitation_priority_basis": "Preserve historical risk priority unless current manufacturer evidence explicitly updates it; not a fresh exploitation claim.",
+      "review_sources": [
+        "https://support.citrix.com/external/article/CTX696300/citrix-security-advisory-for-netscal.html"
+      ]
+    },
+    {
+      "id": "LINUX-COPYFAIL-CVE-2026-31431",
+      "vendor": "Linux/Ubuntu/Canonical/Red Hat/RHEL/SUSE/Amazon Linux",
+      "products": [
+        "Linux kernel",
+        "Linux Kernel",
+        "Ubuntu Linux",
+        "Red Hat Enterprise Linux",
+        "RHEL",
+        "SUSE Linux",
+        "Amazon Linux"
+      ],
+      "severity": "HIGH",
+      "cves": [
+        "CVE-2026-31431"
+      ],
+      "hotfix_strategy": "DISTRO_KERNEL_UPDATE_OR_LOCAL_MODULE_MITIGATION",
+      "action": "Install the distribution kernel that fixes CVE-2026-31431. Until the vendor-fixed kernel is active, disable algif_aead persistently and unload it when operationally safe; block AF_ALG in container/CI seccomp profiles where untrusted workloads execute. Use scripts/linux/mitigate-copy-fail.sh for an explicit-gate local mitigation.",
+      "verify": "Distribution security tracker reports the running kernel fixed, or the interim algif_aead/AF_ALG mitigation is verified until reboot into a fixed kernel.",
+      "sources": [
+        "https://ubuntu.com/security/CVE-2026-31431",
+        "https://www.cert.europa.eu/publications/security-advisories/2026-005/"
+      ],
+      "verification_status": "VERIFIED",
+      "reviewed_on": "2026-11-02",
+      "review_note": "Distribution kernel packages and release applicability must be checked separately; no generic kernel version PASS or runtime mitigation proof.",
+      "historical_exploitation_flag": false,
+      "exploitation_status": "UNKNOWN",
+      "actively_exploited": false,
+      "exploitation_priority_basis": "Preserve historical risk priority unless current manufacturer evidence explicitly updates it; not a fresh exploitation claim.",
+      "review_sources": [
+        "https://ubuntu.com/security/CVE-2026-31431"
+      ]
+    },
+    {
+      "id": "PANOS-CVE-2026-0300-ACTIVE",
+      "vendor": "Palo Alto Networks",
+      "products": [
+        "PAN-OS",
+        "PA-Series",
+        "VM-Series"
+      ],
+      "severity": "CRITICAL",
+      "cves": [
+        "CVE-2026-0300"
+      ],
+      "hotfix_strategy": "VENDOR_FIXED_RELEASE_PLUS_CAPTIVE_PORTAL_ISOLATION",
+      "action": "Upgrade to a Palo Alto fixed release for the exact PAN-OS train. Until fixed, disable User-ID Authentication Portal if not required or restrict it to trusted zones only. Previously Internet-exposed affected firewalls require compromise assessment because Palo Alto observed exploitation.",
+      "verify": "Vendor advisory confirms the exact PAN-OS build is fixed for CVE-2026-0300 and User-ID Authentication Portal exposure is authorized/constrained.",
+      "sources": [
+        "https://security.paloaltonetworks.com/CVE-2026-0300",
+        "https://www.cert.europa.eu/publications/security-advisories/2026-006/"
+      ],
+      "verification_status": "VERIFIED",
+      "reviewed_on": "2026-11-02",
+      "review_note": "Vendor advisory confirmed; deployment configuration and branch-specific solution require manual vendor verification.",
+      "historical_exploitation_flag": true,
+      "exploitation_status": "VENDOR_CONFIRMED_LIMITED",
+      "actively_exploited": true,
+      "exploitation_priority_basis": "Preserve historical risk priority unless current manufacturer evidence explicitly updates it; not a fresh exploitation claim.",
+      "review_sources": [
+        "https://security.paloaltonetworks.com/CVE-2026-0300"
+      ]
+    },
+    {
+      "id": "IVANTI-SENTRY-JUN2026",
+      "vendor": "Ivanti",
+      "products": [
+        "Ivanti Sentry",
+        "Sentry"
+      ],
+      "severity": "CRITICAL",
+      "cves": [
+        "CVE-2026-10520",
+        "CVE-2026-10523"
+      ],
+      "hotfix_strategy": "VENDOR_FIXED_RELEASE_PLUS_EDGE_ISOLATION",
+      "action": "Historical guidance only; obtain the current manufacturer advisory before action. Update Ivanti Sentry using the current vendor-fixed release/hotfix for the deployed branch. Prioritize Internet-facing appliances and restrict management/service exposure to trusted networks until remediation is verified.",
+      "verify": "Ivanti guidance confirms the exact deployed Sentry version is fixed for CVE-2026-10520 and CVE-2026-10523.",
+      "sources": [
+        "https://www.cert.europa.eu/publications/security-advisories/2026-008/"
+      ],
+      "verification_status": "UNKNOWN",
+      "reviewed_on": "2026-11-02",
+      "review_note": "Full current manufacturer remediation statement not established in this bounded review; historical guidance requires vendor confirmation.",
+      "historical_exploitation_flag": false,
+      "exploitation_status": "UNKNOWN",
+      "actively_exploited": false,
+      "exploitation_priority_basis": "Preserve historical risk priority unless current manufacturer evidence explicitly updates it; not a fresh exploitation claim."
+    },
+    {
+      "id": "CONNECTWISE-SCREENCONNECT-CVE-2026-84869",
+      "vendor": "ConnectWise",
+      "products": [
+        "ScreenConnect",
+        "ConnectWise ScreenConnect"
+      ],
+      "severity": "CRITICAL",
+      "cves": [
+        "CVE-2026-84869"
+      ],
+      "hotfix_strategy": "VENDOR_UPDATE_PLUS_FORENSIC_TRIAGE",
+      "minimum_fixed_version": "26.6.5",
+      "action": "Upgrade affected ScreenConnect host clients and access agents to at least 26.6.5 and verify each deployed client. A server version alone is insufficient.",
+      "verify": "ScreenConnect reports version >= 26.6.5, relevant clients/agents are updated, temporary file-transfer restrictions are either retained or deliberately restored after patch validation, and compromise triage is closed for exposed systems.",
+      "sources": [
+        "https://www.connectwise.com/company/trust/security-bulletins/2026-09-08-screenconnect-bulletin",
+        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2026-84869"
+      ],
+      "verification_status": "VERIFIED",
+      "reviewed_on": "2026-11-02",
+      "review_note": "Affected component is the client, fixed in 26.6.5. Server upgrade alone cannot prove client/agent patch state.",
+      "historical_exploitation_flag": true,
+      "exploitation_status": "UNKNOWN",
+      "actively_exploited": true,
+      "exploitation_priority_basis": "Preserve historical risk priority unless current manufacturer evidence explicitly updates it; not a fresh exploitation claim.",
+      "required_component": "client",
+      "review_sources": [
+        "https://www.connectwise.com/company/trust/security-bulletins/2026-09-08-screenconnect-bulletin"
+      ]
+    }
+  ],
+  "scope": "Selected advisory review, not a complete current vulnerability feed or fleet compliance assessment.",
+  "source_scope": [
+    "Vendor security advisories and release notes",
+    "CERT-EU Security Advisories",
+    "CISA Known Exploited Vulnerabilities evidence where directly or government-source corroborated",
+    "Canadian Centre for Cyber Security alerts/advisories",
+    "GitHub Security Advisories for covered open-source projects"
+  ],
+  "cert_eu_2026_advisory_coverage": {
+    "2026-001": [
+      "IVANTI-EPMM-2026-ACTIVE"
+    ],
+    "2026-002": [
+      "CISCO-SDWAN-FEB2026-ACTIVE"
+    ],
+    "2026-003": [
+      "CITRIX-NETSCALER-MAR2026",
+      "CITRIX-NETSCALER-AUG2026"
+    ],
+    "2026-004": [
+      "MS-SHAREPOINT-JUL2026-ACTIVE"
+    ],
+    "2026-005": [
+      "LINUX-COPYFAIL-CVE-2026-31431"
+    ],
+    "2026-006": [
+      "PANOS-CVE-2026-0300-ACTIVE"
+    ],
+    "2026-007": [
+      "MS-WINDOWS-ACTIVE-2026"
+    ],
+    "2026-008": [
+      "IVANTI-SENTRY-JUN2026"
+    ],
+    "2026-009": [
+      "MS-SHAREPOINT-JUL2026-ACTIVE"
+    ],
+    "2026-010": [
+      "CITRIX-NETSCALER-AUG2026"
+    ],
+    "2026-011": [
+      "SAP-SEP2026"
+    ],
+    "2026-012": [
+      "CHECKPOINT-VPN-SEP2026"
+    ]
+  },
+  "historical_snapshot": "critical-2026-09-14.json",
+  "historical_snapshot_sha256": "6b22d56db2401212c9cf7328df9fadf8ff1a733603bee9eabd90ed52218f5791",
+  "review_semantics": "VERIFIED means only the stated manufacturer claim was checked; deployment applicability and later advisories remain external. UNKNOWN cannot produce PASS_FIXED.",
+  "cert_eu_coverage_scope": "Historical September mapping only; not a newly verified CERT-EU inventory."
+}

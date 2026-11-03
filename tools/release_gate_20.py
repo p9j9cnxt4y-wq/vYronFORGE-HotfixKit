@@ -62,9 +62,9 @@ def check(name, fn):
     except Exception as exc:
         checks.append({'id':f'{len(checks)+1:02d}','name':name,'status':'FAIL','reason':type(exc).__name__})
 
-check('01-version-metadata',lambda: need('version = "0.4.1rc1"' in (R/'pyproject.toml').read_text()))
-check('02-python-module-version',lambda: need('0.4.1rc1' in (R/'src/vyronforge_hotfix/__init__.py').read_text()))
-check('03-current-index-version',lambda: need(idx['repository_candidate']=='v0.4.1-rc1'))
+check('01-version-metadata',lambda: need('version = "0.4.1"' in (R/'pyproject.toml').read_text()))
+check('02-python-module-version',lambda: need('0.4.1' in (R/'src/vyronforge_hotfix/__init__.py').read_text()))
+check('03-historical-index-version',lambda: need(idx['repository_candidate']=='v0.4.1-rc1'))
 check('04-historical-evidence-marked',lambda: need('historical' in (R/'README.md').read_text().lower()))
 check('05-only-one-changelog-heading',lambda: need((R/'CHANGELOG.md').read_text().count('# Changelog')==1))
 check('06-topics-count-eleven',lambda: need(len(idx['topics'])==11))
@@ -99,6 +99,6 @@ check('34-windows-native-CI-not-claimed',lambda: need(reg['boundary']['windows_r
 check('35-review-artefacts-exist',lambda: need(all((R/x).is_file() for x in ('docs/failure-atlas/ALL_FINDINGS_20261029.md','docs/failure-atlas/UPSTREAM_STATUS_20261029.json','docs/failure-atlas/README.md'))))
 
 ok=sum(x['status']=='PASS' for x in checks)
-result={'schema':'vyronforge-local-release-checks/1','checked_as_of':'2026-10-29','checks':checks,'passed':ok,'total':len(checks),'status':'PASS_LOCAL_CONTENT' if ok==len(checks) else 'FAIL_LOCAL_CONTENT','windows_remote_ci':'NOT_RUN','fpp_host_attestation':'NOT_RUN','github_published':'NOT_DONE'}
+result={'schema':'vyronforge-local-release-checks/1','checked_as_of':'2026-11-02','candidate':'0.4.1','historical_metadata_date':'2026-10-29','published_baseline':'v0.4.1-rc1','checks':checks,'passed':ok,'total':len(checks),'status':'PASS_LOCAL_CONTENT' if ok==len(checks) else 'FAIL_LOCAL_CONTENT','windows_remote_ci':'NOT_RUN','fpp_host_attestation':'NOT_RUN','github_published':'STABLE_NOT_PUBLISHED_RC_BASELINE_PUBLISHED'}
 print(json.dumps(result,ensure_ascii=False,indent=2))
 raise SystemExit(0 if result['status']=='PASS_LOCAL_CONTENT' else 2)

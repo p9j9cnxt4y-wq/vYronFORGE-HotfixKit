@@ -1,7 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, asdict
 from typing import Any
-from .versioning import at_least
+from .versioning import at_least, is_supported_version
 
 SEV = {"CRITICAL": 4, "HIGH": 3, "MEDIUM": 2, "LOW": 1, "OPERATIONAL": 1}
 
@@ -40,7 +40,9 @@ def _matches(asset: dict[str, Any], item: dict[str, Any]) -> bool:
     return any(p.lower() in product for p in item.get('products', []))
 
 def _branch_gate(current: str, fixed_versions: dict[str, str]) -> tuple[str, str] | None:
-    matches=[(prefix, minimum) for prefix, minimum in fixed_versions.items() if current.lower().startswith(prefix.lower())]
+    matches=[(prefix, minimum) for prefix, minimum in fixed_versions.items()
+             if current.lower()==prefix.lower() or
+             any(current.lower().startswith(prefix.lower()+separator) for separator in ('.','-'))]
     if not matches:
         return None
     prefix, minimum=max(matches, key=lambda x: len(x[0]))
@@ -49,7 +51,21 @@ def _branch_gate(current: str, fixed_versions: dict[str, str]) -> tuple[str, str
     return 'DENY_VULNERABLE', f'{current} < {minimum} ({prefix} branch)'
 
 def _state(asset: dict[str, Any], item: dict[str, Any]) -> tuple[str,str]:
+    if item.get('verification_status','VERIFIED') != 'VERIFIED':
+        return 'REQUIRES_VENDOR_VERIFY','current vendor evidence for this policy is not verified'
     current=str(asset.get('version','')).strip()
+    required_component=item.get('required_component')
+    if required_component and str(asset.get('component','')).strip().lower()!=required_component:
+        return 'REQUIRES_VENDOR_VERIFY','the affected component must be inventoried explicitly'
+    comparable=any(item.get(k) for k in ('fixed_versions_by_edition','fixed_versions_by_platform','minimum_operational_baseline','minimum_fixed_version','auto_compare_fixed_versions')) or item.get('id')=='VMWARE-VMSA-2026-0007'
+    if comparable and not is_supported_version(current):
+        return 'DENY_UNKNOWN','missing, unsupported or prerelease version cannot establish a fixed state'
+    if item.get('fixed_versions_by_edition'):
+        edition=str(asset.get('edition','')).strip().lower()
+        minimum=item['fixed_versions_by_edition'].get(edition)
+        if not minimum:
+            return 'REQUIRES_VENDOR_VERIFY','an explicitly supported product edition is required'
+        return ('PASS_FIXED',f'{current} >= {minimum} ({edition})') if at_least(current,minimum) else ('DENY_VULNERABLE',f'{current} < {minimum} ({edition})')
     if item.get('fixed_versions_by_platform'):
         if not current: return 'DENY_UNKNOWN','product version missing'
         platform=str(asset.get('platform','')).strip().lower()
@@ -94,10 +110,10 @@ def plan(inventory: dict[str, Any], policy: dict[str, Any]) -> dict[str, Any]:
     findings=[]
     matched_assets=set()
     assets=inventory.get('assets', [])
-    for asset in assets:
+    for asset_index,asset in enumerate(assets):
         for item in policy.get('items', []):
             if not _matches(asset,item): continue
-            matched_assets.add(str(asset.get('id','unknown')))
+            matched_assets.add(asset_index)
             state, reason = _state(asset,item)
             score = SEV.get(item.get('severity','LOW'),1)*20
             if item.get('actively_exploited'): score += 15
@@ -110,7 +126,7 @@ def plan(inventory: dict[str, Any], policy: dict[str, Any]) -> dict[str, Any]:
                 action=item['action'], verify=item['verify'], sources=item.get('sources',[])
             ).to_dict())
     findings.sort(key=lambda f:(-f['score'],f['asset_id'],f['policy_id']))
-    unassessed=[str(a.get('id','unknown')) for a in assets if str(a.get('id','unknown')) not in matched_assets]
+    unassessed=[str(a.get('id','unknown')) for index,a in enumerate(assets) if index not in matched_assets]
     return {
         'schema':2, 'snapshot':policy.get('snapshot'),
         'assets':len(assets), 'findings':findings,

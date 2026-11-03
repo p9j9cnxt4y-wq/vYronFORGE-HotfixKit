@@ -5,7 +5,7 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 ROOT=Path(__file__).resolve().parents[1]
-P=ROOT/'policies/critical-2026-09-14.json'
+P=ROOT/'policies/critical-2026-11-02.json'
 
 def main() -> int:
     data=json.loads(P.read_text(encoding='utf-8'))
@@ -33,6 +33,11 @@ def main() -> int:
                 for platform, version in pmap.items():
                     if not str(platform).strip() or not str(version).strip():
                         errors.append(f'{iid}: invalid platform fixed version {platform!r}={version!r}')
+    bundled=ROOT/'src/vyronforge_hotfix/data'/P.name
+    if bundled.read_bytes()!=P.read_bytes(): errors.append('bundled policy differs')
+    for item in data.get('items',[]):
+        if item.get('verification_status') not in ('VERIFIED','UNKNOWN'): errors.append('missing review state')
+        if item.get('verification_status')=='VERIFIED' and not item.get('review_sources'): errors.append('verified policy lacks primary sources')
     coverage=data.get('cert_eu_2026_advisory_coverage',{})
     if coverage and not isinstance(coverage,dict):
         errors.append('cert_eu_2026_advisory_coverage must be an object')

@@ -1,6 +1,17 @@
 # Changelog
 
-## 0.4.1-rc1 — 2026-10-29 (LOCAL CORRECTED CANDIDATE, NOT PUBLISHED)
+## 0.4.1 — local Stable candidate (not published)
+
+- Strict version, branch, inventory, edition and component gates.
+- Manufacturer review dated 2026-11-02; historical policy preserved.
+- Offline Windows audit by default; incomplete searches and unreadable Citrix logs fail closed.
+- Linux audit propagates package-manager failures.
+- Public RC publication is recorded separately from new candidate verification.
+
+
+## 0.4.1-rc1 — published 2026-11-02
+
+The following preparation record is historical (2026-10-29, before publication).
 
 - Correct vendor identity matching to exact normalized declared names or explicit aliases (fix false PASS for shortened vendor names).
 - Redact free-text Authorization Bearer/Basic and additional structured credential fields; extend publication scanning.

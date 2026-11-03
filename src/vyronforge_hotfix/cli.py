@@ -17,7 +17,7 @@ def main():
     pp.add_argument('--redact-evidence', action='store_true', default=True)
     args=p.parse_args()
     if args.cmd=='plan':
-        policy = load(args.policy) if args.policy else json.loads(resources.files('vyronforge_hotfix').joinpath('data/critical-2026-09-14.json').read_text(encoding='utf-8'))
+        policy = load(args.policy) if args.policy else json.loads(resources.files('vyronforge_hotfix').joinpath('data/critical-2026-11-02.json').read_text(encoding='utf-8'))
         report=plan(load(args.inventory),policy)
         safe_report=redact_data(report) if args.redact_evidence else report
         raw=json.dumps(safe_report, indent=2)

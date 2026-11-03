@@ -1,3 +1,5 @@
+> Current status (2026-11-02): v0.4.1-rc1 is published at commit 081d99aee62a42e4e87b946291a24b8008b782f8. Version 0.4.1 is a separate, unpublished local candidate. Dated NOT_PUBLISHED/NOT_DONE entries describe their historical preparation time.
+
 # HotfixKit v0.4.1-rc1 — release candidate
 
 This release is prepared locally and has not been pushed or released by

@@ -42,7 +42,7 @@ class RegisterTests(unittest.TestCase):
             self.assertNotIn('published_as_of',x)
     def test_pyproject_module_and_docs_same_release(self):
         p=(ROOT/'pyproject.toml').read_text();v=(ROOT/'src/vyronforge_hotfix/__init__.py').read_text()
-        self.assertIn('version = "0.4.1rc1"',p);self.assertIn('0.4.1rc1',v)
+        self.assertIn('version = "0.4.1"',p);self.assertIn('0.4.1',v)
         self.assertEqual(INDEX['repository_candidate'],'v0.4.1-rc1')
         self.assertIn('0.4.1-rc1',(ROOT/'README.md').read_text())
     def test_no_duplicate_top_level_changelog_title(self):

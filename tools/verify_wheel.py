@@ -25,6 +25,7 @@ REQUIRED = {
     'vyronforge_hotfix/execution_integrity.py',
     'vyronforge_hotfix/guest_protocol.py',
     'vyronforge_hotfix/data/critical-2026-09-14.json',
+    'vyronforge_hotfix/data/critical-2026-11-02.json',
     'vyronforge_failure_atlas/__init__.py',
     'vyronforge_failure_atlas/contracts.py',
 }
